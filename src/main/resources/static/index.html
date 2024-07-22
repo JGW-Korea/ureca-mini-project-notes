@@ -6,15 +6,52 @@
     <title>Notes</title>
 
     <!-- CSS Import -->
-    <link rel="stylesheet" href="./css/main.css" />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
     />
+    <link rel="stylesheet" href="./css/main.css" />
   </head>
 
+  <!-- 메인 페이지 == 로그인 페이지 -->
   <body>
-    <h1>Hello</h1>
-    <div class="material-icons">search</div>
+    <div class="login-container">
+      <!-- 비디오 영상이 출력되는 영역 -->
+      <div class="login-container-video__area">
+        <div id="player"></div>
+      </div>
+
+      <!-- 비디오 영상  -->
+      <div class="login-container-video__cover"></div>
+
+      <!-- 로그인 영역 -->
+      <div class="login-container__card">
+        <img src="./images/login-sunset.png" alt="sunset" />
+
+        <h1>Notes 로그인</h1>
+
+        <!-- 로그인 입력 창 -->
+        <form method="post">
+          <div>
+            <label for="id"></label>
+            <input type="text" name="id" id="id" />
+          </div>
+
+          <div>
+            <label for="password"></label>
+            <input type="password" name="password" id="password" />
+          </div>
+
+          <button type="submit">로그인</button>
+        </form>
+
+        <!-- 회원 정보 수정 영역 -->
+        <div class="action">
+          <a href="javascript:void(0)">회원가입</a>
+          <a href="javascript:void(0)">아이디 찾기</a>
+          <a href="javascript:void(0)">비밀번호 찾기</a>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

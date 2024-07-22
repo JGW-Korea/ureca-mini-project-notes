@@ -3,3 +3,20 @@
 /* CSS 라이브러리 */
 @import url("https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css"); /* 브라우저 CSS 초기화 */
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap"); /* 나눔 고딕 구글 폰트 */
+
+/* 공통 스타일 영역 */
+body {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  font-family: "Nanum Gothic", sans-serif;
+  color: #333;
+}
+
+img {
+  display: block;
+}
+
+a {
+  text-decoration: none;
+}
