@@ -1,8 +1,9 @@
-/* Main CSS */
-
 /* CSS 라이브러리 */
 @import url("https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css"); /* 브라우저 CSS 초기화 */
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap"); /* 나눔 고딕 구글 폰트 */
+
+/* 페이지 CSS 불러오기 */
+@import url("./pages/home.css");
 
 /* 공통 스타일 영역 */
 body {
