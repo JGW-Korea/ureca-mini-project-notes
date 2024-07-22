@@ -8,14 +8,15 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag); // insertBefore( '�
 function onYouTubeIframeAPIReady() {
   // Iframe의 YT 클래스의 정적 메서드 Player("Id 속성값", 옵션(Object))
   new YT.Player("player", {
-    videoId: "xg1gNlxto2M",
+    videoId: "4088CV88CdQ",
 
     playerVars: {
       autoplay: true, // 자동 재생 유무
       loop: true, // 반복 재생 유무
-      playlist: "u9vK5utTcxE", // 반복 재생할 유튜브 영상 ID 목록
+      playlist: "4088CV88CdQ", // 반복 재생할 유튜브 영상 ID 목록
       controls: 0,
       disablekb: 1,
+      start: 180,
     },
 
     events: {
