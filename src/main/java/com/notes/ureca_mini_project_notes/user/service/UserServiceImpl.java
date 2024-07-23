@@ -4,13 +4,15 @@ import java.sql.SQLException;
 
 import org.springframework.stereotype.Service;
 
+import com.notes.ureca_mini_project_notes.user.dto.User;
+
 @Service
 public class UserServiceImpl implements UserService {
 
   @Override
-  public int login() throws SQLException {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'login'");
+  public int loginService(User user) throws SQLException {
+    System.out.println("Service " + user.getId() + " " + user.getPassword());
+    return 1;
   }
 
   @Override

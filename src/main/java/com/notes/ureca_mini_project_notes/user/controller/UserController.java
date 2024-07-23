@@ -20,9 +20,14 @@ public class UserController {
   @ResponseBody
   @PostMapping("/login")
   public String login(@RequestBody User user) { // 로그인 컨트롤러
-    // System.out.println(id);
-    System.out.println(user.getId() + " " + user.getPassword());
     
+    try {
+      service.loginService(user);
+    } catch (Exception e) {
+      // TODO: handle exception
+      e.printStackTrace();
+    }
+
     return "login";
   }
 
