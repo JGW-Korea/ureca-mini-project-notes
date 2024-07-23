@@ -1,8 +1,8 @@
-import { auth, inputCheck } from "./auth.js";
+import { auth, inputCheck } from "../../module/auth.js";
 
 // 접속한 사용자가 현재 로그인 중이면, 메인 페이지가 아닌 메모 페이지로 이동시킨다.
 if (auth()) {
-  console.log("Hello");
+  location.href = "/pages/memo/index.html";
 }
 
 // 접속한 사용자가 현재 로그인을 하지 않은 경우, 메인 페이지(로그인)를 그대로 보여준다.
@@ -67,7 +67,7 @@ document
               errorMsgElement.textContent = "";
 
               // 세션 스토리지에 전달받은 userInfo를 저장시킨다.
-              sessionStorage.setItem("userInfo", JSON.stringify(data.user));
+              localStorage.setItem("userInfo", JSON.stringify(data.user));
               location.href = "/pages/memo/index.html";
             }
           });

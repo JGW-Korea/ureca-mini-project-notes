@@ -1,5 +1,5 @@
 export const auth = () => {
-  return false;
+  return localStorage.getItem("userInfo") !== null;
 };
 
 // input 아이디, 비밀번호 유효성 검사
