@@ -41,7 +41,10 @@ document
       default: // 모두 올바르게 입력되었을 경우
         errorMsgElement.textContent = "";
 
-        // 서버로 입력된 아이디, 비밀번호를 보낸다.
+        // fetch(Ajax)를 통해 서버와 비동기 통신을 한다.
+        // 1. /user/login으로 입력된 아이디와 비밀번호를 보내서 DB에 저장된 데이터와 일치하는지 요청을 보낸다.
+        // 2. 서버에서 응답받아온 데이터를 JSON 형태로 형변환 시킨다.
+        // 3. 응답받은 status 상태를 통해 각 상황을 정의한다.
         fetch(`/user/login`, {
           method: "POST",
           headers: {
@@ -53,6 +56,20 @@ document
           }),
         })
           .then((res) => res.json())
-          .then((data) => console.log(data));
+          .then((data) => {
+            // 아이디 또는 비밀번호가 일치하는 않은 경우
+            if (["INVALID_ID", "INVALID_PASSWORD"].includes(data.status)) {
+              data.status === "INVALID_ID"
+                ? (errorMsgElement.textContent = "존재하지 않는 아이디입니다.")
+                : (errorMsgElement.textContent = "비밀번호가 틀렸습니다.");
+            } else {
+              // 아이디와 비밀번호가 일치한 경우
+              errorMsgElement.textContent = "";
+
+              // 세션 스토리지에 전달받은 userInfo를 저장시킨다.
+              sessionStorage.setItem("userInfo", JSON.stringify(data.user));
+              location.href = "/pages/memo/index.html";
+            }
+          });
     }
   });
