@@ -1,17 +1,27 @@
 package com.notes.ureca_mini_project_notes.user.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.notes.ureca_mini_project_notes.user.dto.User;
+import com.notes.ureca_mini_project_notes.user.service.UserService;
+
 @RestController
 @RequestMapping("/user")
 public class UserController {
 
+  @Autowired
+  UserService service;
+
   @ResponseBody
   @PostMapping("/login")
-  public String login() { // 로그인 컨트롤러
+  public String login(User user) { // 로그인 컨트롤러
+    
+    System.out.println(user.getId() + " " + user.getPassword());
+    
     return "login";
   }
 

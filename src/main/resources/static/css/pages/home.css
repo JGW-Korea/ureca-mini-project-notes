@@ -52,13 +52,14 @@
 }
 
 .login-container .login-container__card h1 {
-  padding: 35px 20px 0;
+  padding: 35px 20px 10px;
   font-size: 18px;
   text-align: center;
 }
 
 .login-container .login-container__card form {
-  padding: 30px 22px;
+  margin-top: 10px;
+  padding: 20px 25px;
 }
 
 .login-container .login-container__card form input {
@@ -84,6 +85,16 @@
   font-weight: 700;
   cursor: pointer;
   transition: 0.4s;
+}
+
+.login-container .login-container__card form .login-container__card--error {
+  display: block;
+  padding: 10px;
+  text-align: center;
+  color: #ff2949;
+  font-size: 14px;
+  font-weight: 600;
+  height: 14px;
 }
 
 .login-container .login-container__card .action {

@@ -2,6 +2,9 @@ package com.notes.ureca_mini_project_notes.user.service;
 
 import java.sql.SQLException;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class UserServiceImpl implements UserService {
 
   @Override
