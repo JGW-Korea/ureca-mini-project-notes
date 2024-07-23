@@ -1,4 +1,4 @@
-// Youtube iframe API
+// 메인 페이지(로그인) 뒷 배경 영상 제어 - Youtube iframe API
 const tag = document.createElement("script");
 tag.src = "https://www.youtube.com/iframe_api"; // youtube iframe API 가져오기
 
