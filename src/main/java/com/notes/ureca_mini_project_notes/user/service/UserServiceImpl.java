@@ -15,10 +15,9 @@ public class UserServiceImpl implements UserService {
   UserDAO dao;
 
   @Override
-  public int loginService(User user) throws SQLException {
-    System.out.println("Hello");
-    System.out.println(dao.selectUser(user));
-    return 1;
+  public User validateUser(User user) throws SQLException {
+    
+    return dao.selectUser(user);
   }
 
   @Override

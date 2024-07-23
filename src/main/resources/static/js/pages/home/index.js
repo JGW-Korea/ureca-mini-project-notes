@@ -52,7 +52,7 @@ document
             password: inputPwd.value,
           }),
         })
-          .then((res) => res.text())
+          .then((res) => res.json())
           .then((data) => console.log(data));
     }
   });
