@@ -2,16 +2,22 @@ package com.notes.ureca_mini_project_notes.user.service;
 
 import java.sql.SQLException;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.notes.ureca_mini_project_notes.user.dao.UserDAO;
 import com.notes.ureca_mini_project_notes.user.dto.User;
 
 @Service
 public class UserServiceImpl implements UserService {
 
+  @Autowired
+  UserDAO dao;
+
   @Override
   public int loginService(User user) throws SQLException {
-    System.out.println("Service " + user.getId() + " " + user.getPassword());
+    System.out.println("Hello");
+    System.out.println(dao.selectUser(user));
     return 1;
   }
 
