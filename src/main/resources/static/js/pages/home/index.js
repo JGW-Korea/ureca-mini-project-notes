@@ -40,5 +40,19 @@ document
 
       default: // 모두 올바르게 입력되었을 경우
         errorMsgElement.textContent = "";
+
+        // 서버로 입력된 아이디, 비밀번호를 보낸다.
+        fetch(`/user/login`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            id: inputId.value,
+            password: inputPwd.value,
+          }),
+        })
+          .then((res) => res.text())
+          .then((data) => console.log(data));
     }
   });

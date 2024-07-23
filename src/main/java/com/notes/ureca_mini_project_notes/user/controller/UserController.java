@@ -2,6 +2,7 @@ package com.notes.ureca_mini_project_notes.user.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,8 +19,8 @@ public class UserController {
 
   @ResponseBody
   @PostMapping("/login")
-  public String login(User user) { // 로그인 컨트롤러
-    
+  public String login(@RequestBody User user) { // 로그인 컨트롤러
+    // System.out.println(id);
     System.out.println(user.getId() + " " + user.getPassword());
     
     return "login";
