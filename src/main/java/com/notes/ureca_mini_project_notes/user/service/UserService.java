@@ -9,7 +9,7 @@ import com.notes.ureca_mini_project_notes.user.dto.User;
 public interface UserService {
   
   public User validateUser(User user) throws SQLException;
-  public User findId(User user) throws SQLException;
+  public User findId(String user) throws SQLException;
   
   // 비밀번호 찾기(수정) 관련 Service 메서드
   public int findPasswordAndUpdate(String id) throws SQLException;

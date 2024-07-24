@@ -130,6 +130,10 @@ document
                 msgBoxElement.classList.add("error");
                 msgBoxElement.textContent = "중복된 아이디가 존재합니다.";
                 registerInputId.focus();
+              } else if (data.status === "DuplicateNameExists") {
+                msgBoxElement.classList.add("error");
+                msgBoxElement.textContent = "중복된 이름이 존재합니다.";
+                registerInputName.focus();
               } else {
                 msgBoxElement.textContent = "";
                 msgBoxElement.classList.remove("error");

@@ -73,22 +73,19 @@ public class UserController {
   }
 
   @PostMapping("/find-id")
-  public Map<String, Object> findId(@RequestBody User user) { // 아이디 찾기 컨트롤러
+  public Map<String, Object> findId(@RequestParam("name") String name) { // 아이디 찾기 컨트롤러
     
     Map<String, Object> response = new HashMap<>(); // 상태를 반환하기 위한 Map 객체
     
     try {
-      User userInfo = service.findId(user); // 입력된 이름 값을 통해 회원 정보를 DB에서 데이터를 가져온다.
+      User userInfo = service.findId(name); // 입력된 이름 값을 통해 회원 정보를 DB에서 데이터를 가져온다.
       
-      // 세션에 동일한 정보가 없을 경우
+      // 클라이언트에서 받아온 이름과 매칭되는 아이디가 없을 경우
       if(userInfo == null) {
         response.put("status", "INVALID_ID_AND_NAME");
-      } else if(!userInfo.getName().equals(user.getName())) {
-        response.put("status", "INVALID_NAME");
       } else {
-        // 세션에 동일한 정보가 있을 경우
 
-        // 사용자의 비밀번호의 뒷자리는 보이지 않게 처리를 해준다.
+        // 매개변수로 받아온 이름과 매칭되는 아이디가 있을 경우
         userInfo.setPassword(
           userInfo.getPassword().substring(0, 4) + 
           userInfo.getPassword().substring(4).replaceAll(".", "*")
@@ -145,9 +142,11 @@ public class UserController {
     try {
       User userInfo = service.registerFindIdService(user);
 
-      // 아이디 중복 확인
-      if(userInfo != null) {
+      // 아이디, 이름 중복 확인
+      if(userInfo.getId().equals(user.getId())) {
         response.put("status", "DuplicateIdExists");
+      } else if(userInfo.getName().equals(user.getName())) {
+        response.put("status", "DuplicateNameExists");
       } else {
         // 중복된 아이디가 없을 경우 아이디 생성
         service.registerService(user);

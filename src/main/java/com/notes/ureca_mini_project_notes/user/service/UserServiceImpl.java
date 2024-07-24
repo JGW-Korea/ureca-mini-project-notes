@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
-  public User findId(User user) throws SQLException {
+  public User findId(String user) throws SQLException {
     return dao.findUserId(user);
   }
 
@@ -43,7 +43,7 @@ public class UserServiceImpl implements UserService {
 
   @Override
   public User registerFindIdService(User user) throws SQLException {
-    return dao.loginCheckUser(user);
+    return dao.isUserDuplicate(user);
   }
 
   @Override

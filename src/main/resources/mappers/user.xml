@@ -11,7 +11,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   </select>
 
   <select id="findUserId" parameterType="User" resultType="User">
-    select * from users where user_id = #{id} and user_name = #{name}
+    select * from users where user_name = #{name}
   </select>
   
   <select id="findPassword_UserIdCheck" parameterType="String" resultType="int">
@@ -21,6 +21,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   <update id="findPassword_UpdatePassword" parameterType="Map">
     update users set user_password = #{password} where user_id = #{id}
   </update>
+
+  <select id="isUserDuplicate" parameterType="User" resultType="User">
+    select * from users where user_id = #{id} or user_name = #{name}
+  </select>
 
   <insert id="register" parameterType="User">
     insert into users (user_id, user_password, user_name) values (#{id}, #{password}, #{name})
