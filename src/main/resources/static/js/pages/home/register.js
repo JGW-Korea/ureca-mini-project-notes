@@ -1,15 +1,18 @@
 import { registerInputValueCheck } from "../../module/auth.js";
 
+// 회원가입 버튼을 눌렀을때 발생하는 이벤트
 document
   .querySelector(".register-form input[type='submit']")
   .addEventListener("click", (event) => {
     event.preventDefault();
 
+    // input 태그들을 가져온다.
     const inputId = document.querySelector(".register-form #id");
     const inputPassword = document.querySelector(".register-form #password");
     const inputName = document.querySelector(".register-form #name");
     const errorBox = document.querySelector(".register-error");
 
+    // Switch 조건문을 통해 각 유효성 검사를 실시한다.
     switch (
       registerInputValueCheck(
         inputId.value,
@@ -37,6 +40,7 @@ document
         inputPassword.focus();
         break;
 
+      // 모든 유효성 검사에 걸리지 않았을 경우 회원가입을 실시한다.
       default:
         errorBox.textContent = "";
 
