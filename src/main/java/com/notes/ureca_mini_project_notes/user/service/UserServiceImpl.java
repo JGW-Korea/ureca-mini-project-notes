@@ -1,6 +1,8 @@
 package com.notes.ureca_mini_project_notes.user.service;
 
 import java.sql.SQLException;
+import java.util.Map;
+import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,9 +27,18 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
-  public int findPasswordAndUpdate() throws SQLException {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'pwdUpdate'");
+  public int findPasswordAndUpdate(String id) throws SQLException {
+    return dao.findPassword_UserIdCheck(id);
   }
+
+  @Override
+  public int findPasswordAndUpdate(String newPassword, String userId) throws SQLException {
+    
+    Map<String, Object> params = new HashMap<>();
+    params.put("id", userId);
+    params.put("password", newPassword);
+    
+    return dao.findPassword_UpdatePassword(params);
+  };
   
 }

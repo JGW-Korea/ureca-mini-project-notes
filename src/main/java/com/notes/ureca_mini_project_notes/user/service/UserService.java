@@ -10,6 +10,9 @@ public interface UserService {
   
   public User validateUser(User user) throws SQLException;
   public User findId(User user) throws SQLException;
-  public int findPasswordAndUpdate() throws SQLException;
+  
+  // 비밀번호 찾기(수정) 관련 Service 메서드
+  public int findPasswordAndUpdate(String id) throws SQLException;
+  public int findPasswordAndUpdate(String newPassword, String userId) throws SQLException;
 
 }

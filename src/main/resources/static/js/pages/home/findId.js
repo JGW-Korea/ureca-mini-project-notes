@@ -41,22 +41,26 @@ document
         })
           .then((res) => res.json())
           .then((data) => {
-            errorMsgElement.textContent = "";
+            if (["INVALID_ID_AND_NAME", "INVALID_NAME"].includes(data.status)) {
+              data.status === "INVALID_ID"
+                ? (errorMsgElement.textContent = "존재하지 않는 아이디입니다.")
+                : (errorMsgElement.textContent = "잘못된 이름을 작성했습니다.");
+            } else {
+              const $newSection = document.createElement("section");
+              const $newUl = document.createElement("ul");
 
-            const $newSection = document.createElement("section");
-            const $newUl = document.createElement("ul");
-
-            $newSection.appendChild($newUl);
-            console.log(data);
-            for (const key in data.user) {
-              if (key !== "no") {
-                const $el = document.createElement("li");
-                $el.textContent = `${key} : ${data.user[key]}`;
-                $newUl.appendChild($el);
+              $newSection.appendChild($newUl);
+              console.log(data);
+              for (const key in data.user) {
+                if (key !== "no") {
+                  const $el = document.createElement("li");
+                  $el.textContent = `${key} : ${data.user[key]}`;
+                  $newUl.appendChild($el);
+                }
               }
-            }
 
-            document.querySelector("body").appendChild($newSection);
+              document.querySelector("body").appendChild($newSection);
+            }
           });
     }
   });

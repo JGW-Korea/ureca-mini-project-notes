@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.notes.ureca_mini_project_notes.user.dto.User;
@@ -82,6 +83,8 @@ public class UserController {
       // 세션에 동일한 정보가 없을 경우
       if(userInfo == null) {
         response.put("status", "INVALID_ID_AND_NAME");
+      } else if(!userInfo.getName().equals(user.getName())) {
+        response.put("status", "INVALID_NAME");
       } else {
         // 세션에 동일한 정보가 있을 경우
 
@@ -104,8 +107,35 @@ public class UserController {
     return response; // 응답 결과를 반환한다.
   }
 
-  @PostMapping("/find-password")
-  public String findPassword() { // 비밀번호 찾기 컨트롤러
-    return "find-password";
+  // 비밀번호 찾기 관련 Controller
+  @PostMapping("/find-password/compare-id") // 입력된 아이디를 DB에 저장되어있는지 찾는다.
+  public int findPasswordCompareId(@RequestParam("id") String id) { // 비밀번호 찾기 컨트롤러
+    int response = 0;
+
+    try {
+      response = service.findPasswordAndUpdate(id);
+    } catch (Exception e) {
+      // TODO: handle exception
+      e.printStackTrace();
+    }
+    
+    return response;
   }
+
+  @PostMapping("/find-password/update-password")
+  public int findPasswordUpdatePassword(@RequestParam("password") String newPwd, @RequestParam("user") String userId) {
+
+    int response = 0;
+
+    try {
+      
+      response = service.findPasswordAndUpdate(newPwd, userId);
+
+    } catch (Exception e) {
+      // TODO: handle exception
+      e.printStackTrace();
+    }
+    return response;
+  }
+
 }
