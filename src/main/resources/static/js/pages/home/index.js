@@ -67,7 +67,7 @@ document
               errorMsgElement.textContent = "";
 
               // 세션 스토리지에 전달받은 userInfo를 저장시킨다.
-              localStorage.setItem("userInfo", JSON.stringify(data.user));
+              sessionStorage.setItem("userInfo", JSON.stringify(data.user));
               location.href = "/pages/memo/index.html";
             }
           });
