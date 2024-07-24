@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.notes.ureca_mini_project_notes.user.dto.User;
@@ -23,7 +22,6 @@ public class UserController {
   @Autowired
   UserService service;
 
-  @ResponseBody
   @PostMapping("/login")
   public Map<String, Object> login(@RequestBody User user, HttpServletRequest request) { // 로그인 컨트롤러
 
@@ -48,7 +46,6 @@ public class UserController {
         // session.setAttribute("user", userInfo);
       }
     } catch (Exception e) {
-      // TODO: handle exception
       e.printStackTrace();
       response.put("status", "SQLError");
     }
@@ -56,19 +53,29 @@ public class UserController {
     return response;
   }
 
-  @ResponseBody
   @PostMapping("/logout")
-  public boolean logout() { // 로그아웃 세션 컨트롤러
-    return true;
+  public Map<String, Object> logout(HttpServletRequest request) { // 로그아웃 세션 컨트롤러
+    
+    HttpSession session = request.getSession(false);
+    Map<String, Object> response = new HashMap<>(); // 상태를 반환하기 위한 Map 객체
+
+    // 세션에 정보가 없을 경우
+    if(session == null) {
+      response.put("status", "Logout_Faild");
+    } else { // 세션에 정보가 있을 경우
+      session.invalidate(); // 현재 사용자의 세션을 무효화 시키는 invalidate() 메서드를 통해 현재 사용자의 세션 정보를 모두 삭제한다.
+      response.put("status", "Logout_Success");
+    }
+
+    // 결과를 반환한다.
+    return response;
   }
 
-  @ResponseBody
   @PostMapping("/find-id")
   public String findId() { // 아이디 찾기 컨트롤러
     return "find-id";
   }
 
-  @ResponseBody
   @PostMapping("/find-password")
   public String findPassword() { // 비밀번호 찾기 컨트롤러
     return "find-password";
