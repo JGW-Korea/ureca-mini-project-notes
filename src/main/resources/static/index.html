@@ -5,21 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Notes</title>
 
-    <!-- CSS Import -->
+    <!-- Meterial Icons CSS Import -->
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
     />
+
+    <!-- Bootstrap CSS Import -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+
+    <!-- CSS File Import -->
     <link rel="stylesheet" href="./css/main.css" />
 
-    <!-- JavaScript Import -->
+    <!-- Bootstrap JavaScript Import -->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- JavaScript File Import -->
     <script defer src="./js/pages/home/youtube.js"></script>
     <script type="module" src="./js/pages/home/index.js"></script>
   </head>
 
   <!-- 메인 페이지 == 로그인 페이지 -->
   <body>
-    <div class="login-container">
+    <!-- 로그인 영역 -->
+    <main class="login-container">
       <!-- 비디오 영상이 출력되는 영역 -->
       <div class="login-container-video__area">
         <div id="player"></div>
@@ -57,11 +85,51 @@
 
         <!-- 회원 정보 수정 영역 -->
         <div class="action">
-          <a href="./pages/test/find-register-test.html">회원가입</a>
+          <!-- <a href="./pages/test/find-register-test.html">회원가입</a> -->
+          <a
+            href="javascript:voide(0)"
+            data-toggle="modal"
+            data-target="#registerModalCenter"
+          >
+            회원가입
+          </a>
           <a href="./pages/test/find-id-test.html">아이디 찾기</a>
           <a href="./pages/test/find-password-test.html">비밀번호 찾기</a>
         </div>
       </div>
+    </main>
+
+    <!-- 회원가입 모달창 -->
+    <div
+      class="modal fade"
+      id="registerModalCenter"
+      role="dialog"
+      aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true"
+    >
+      <!-- 모달창 영역 -->
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+          </div>
+          <div class="modal-body">...</div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <!-- 아이디 찾기 모달창 -->
+
+    <!-- 비밀번호 찾기 모달창 -->
   </body>
 </html>
