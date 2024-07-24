@@ -1,5 +1,6 @@
 .modal .modal-dialog .modal-content {
   border-radius: 10px;
+  min-height: 415px;
 }
 
 .modal .modal-dialog .modal-content .modal-header {
@@ -7,4 +8,9 @@
   border-bottom: none;
   font-size: 18px;
   justify-content: center;
+}
+
+.modal .modal-dialog .modal-content .modal-body {
+  margin-top: 10px;
+  padding: 20px 25px;
 }

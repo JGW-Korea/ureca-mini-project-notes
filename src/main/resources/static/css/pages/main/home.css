@@ -22,7 +22,7 @@
 }
 
 .login-container .login-container-video__cover {
-  background-image: url("../../images/video_cover_pattern.png");
+  background-image: url("../../../images/video_cover_pattern.png");
   background-color: rgba(0, 0, 0, 0.3);
   position: absolute;
   top: 0;
@@ -61,41 +61,6 @@
 .login-container .login-container__card form {
   margin-top: 10px;
   padding: 20px 25px;
-}
-
-.login-container .login-container__card form input {
-  width: 100%;
-  margin-bottom: 12px;
-  padding: 15px;
-  box-sizing: border-box;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  outline: none;
-  font-size: 14px;
-  transition: 0.3s;
-}
-
-.login-container .login-container__card form input:focus {
-  border: 1px solid #333;
-}
-
-.login-container .login-container__card form input[type="submit"] {
-  background-color: #333;
-  color: #fff;
-  border: 2px solid #333;
-  font-weight: 700;
-  cursor: pointer;
-  transition: 0.4s;
-}
-
-.login-container .login-container__card form .login-container__card--error {
-  display: block;
-  padding: 10px;
-  text-align: center;
-  color: #ff2949;
-  font-size: 14px;
-  font-weight: 600;
-  height: 14px;
 }
 
 .login-container .login-container__card .action {

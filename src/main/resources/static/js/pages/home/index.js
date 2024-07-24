@@ -1,4 +1,8 @@
-import { auth, loginInputValueCheck } from "../../module/auth.js";
+import {
+  auth,
+  loginInputValueCheck,
+  registerInputValueCheck,
+} from "../../module/auth.js";
 
 // 접속한 사용자가 현재 로그인 중이면, 메인 페이지가 아닌 메모 페이지로 이동시킨다.
 if (auth()) {
@@ -18,7 +22,7 @@ document
 
     // 유효성 검사 에러 box 태그
     const errorMsgElement = document.querySelector(
-      ".login-container__card .login-container__card--error"
+      ".login-container__card .error-message-box"
     );
 
     switch (loginInputValueCheck(inputId.value, inputPwd.value)) {
