@@ -22,4 +22,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     update users set user_password = #{password} where user_id = #{id}
   </update>
 
+  <insert id="register" parameterType="User">
+    insert into users (user_id, user_password, user_name) values (#{id}, #{password}, #{name})
+  </insert>
+
 </mapper>

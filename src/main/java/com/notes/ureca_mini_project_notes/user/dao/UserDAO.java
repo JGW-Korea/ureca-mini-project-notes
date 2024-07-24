@@ -17,4 +17,6 @@ public interface UserDAO {
   public int findPassword_UserIdCheck (String id) throws SQLException;
   public int findPassword_UpdatePassword(Map<String, Object> params) throws SQLException;
   
+  // 회원가입
+  public int register(User user) throws SQLException;
 }

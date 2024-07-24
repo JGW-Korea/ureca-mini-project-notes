@@ -57,3 +57,15 @@ export const updatePasswordCheck = (password, confirmPassword) => {
     return "success";
   }
 };
+
+export const registerInputValueCheck = (id, pwd, name) => {
+  if (!id && !pwd && !name) return "inputEmptyError";
+
+  if (!id) return "idValueEmpty";
+
+  if (!pwd) return "passwordValueEmpty";
+
+  if (!name) return "nameValueEmpty";
+
+  if (id && pwd && name) return "success";
+};

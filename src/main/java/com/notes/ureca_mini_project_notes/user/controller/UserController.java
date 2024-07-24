@@ -138,4 +138,29 @@ public class UserController {
     return response;
   }
 
+  @PostMapping("/register")
+  public Map<String, Object> register(@RequestBody User user) {
+    Map<String, Object> response = new HashMap<>();
+
+    try {
+      User userInfo = service.registerFindIdService(user);
+
+      // 아이디 중복 확인
+      if(userInfo != null) {
+        response.put("status", "DuplicateIdExists");
+      } else {
+        // 중복된 아이디가 없을 경우 아이디 생성
+        service.registerService(user);
+        response.put("status", "success");
+      }
+
+    } catch (Exception e) {
+      // TODO: handle exception
+      e.printStackTrace();
+    }
+
+    return response;
+
+  }
+
 }

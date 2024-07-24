@@ -40,5 +40,15 @@ public class UserServiceImpl implements UserService {
     
     return dao.findPassword_UpdatePassword(params);
   };
+
+  @Override
+  public User registerFindIdService(User user) throws SQLException {
+    return dao.loginCheckUser(user);
+  }
+
+  @Override
+  public int registerService(User user) throws SQLException {
+    return dao.register(user);
+  }
   
 }
