@@ -1,4 +1,4 @@
-import { auth, inputCheck } from "../../module/auth.js";
+import { auth, loginInputValueCheck } from "../../module/auth.js";
 
 // 접속한 사용자가 현재 로그인 중이면, 메인 페이지가 아닌 메모 페이지로 이동시킨다.
 if (auth()) {
@@ -21,7 +21,7 @@ document
       ".login-container__card .login-container__card--error"
     );
 
-    switch (inputCheck(inputId.value, inputPwd.value)) {
+    switch (loginInputValueCheck(inputId.value, inputPwd.value)) {
       // 아이디와 비밀번호 모두 입력하지 않았을 경우
       case "inputEmptyError":
         errorMsgElement.textContent = "아이디와 비밀번호 모두 입력해주세요.";

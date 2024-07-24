@@ -16,24 +16,16 @@ public class UserServiceImpl implements UserService {
 
   @Override
   public User validateUser(User user) throws SQLException {
-    
-    return dao.selectUser(user);
+    return dao.loginCheckUser(user);
   }
 
   @Override
-  public int logout() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'logout'");
+  public User findId(User user) throws SQLException {
+    return dao.findUserId(user);
   }
 
   @Override
-  public int idUpdate() throws SQLException {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'idUpdate'");
-  }
-
-  @Override
-  public int pwdUpdate() throws SQLException {
+  public int findPasswordAndUpdate() throws SQLException {
     // TODO Auto-generated method stub
     throw new UnsupportedOperationException("Unimplemented method 'pwdUpdate'");
   }

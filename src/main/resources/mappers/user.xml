@@ -4,7 +4,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.notes.ureca_mini_project_notes.user.dao.UserDAO">
-  <select id="selectUser" parameterType="User" resultType="User">
+  
+  <select id="loginCheckUser" parameterType="User" resultType="User">
     select * from users where user_id = #{id}
   </select>
+
+  <select id="findUserId" parameterType="String" resultType="User">
+    select * from users where user_id = #{id} and user_name = #{name}
+  </select>
+  
 </mapper>

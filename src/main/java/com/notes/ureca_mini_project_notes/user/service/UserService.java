@@ -9,8 +9,7 @@ import com.notes.ureca_mini_project_notes.user.dto.User;
 public interface UserService {
   
   public User validateUser(User user) throws SQLException;
-  public int logout();
-  public int idUpdate() throws SQLException;
-  public int pwdUpdate() throws SQLException;
+  public User findId(User user) throws SQLException;
+  public int findPasswordAndUpdate() throws SQLException;
 
 }
