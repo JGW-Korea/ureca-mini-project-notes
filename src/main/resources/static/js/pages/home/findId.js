@@ -40,6 +40,23 @@ document
           }),
         })
           .then((res) => res.json())
-          .then((data) => console.log(data));
+          .then((data) => {
+            errorMsgElement.textContent = "";
+
+            const $newSection = document.createElement("section");
+            const $newUl = document.createElement("ul");
+
+            $newSection.appendChild($newUl);
+            console.log(data);
+            for (const key in data.user) {
+              if (key !== "no") {
+                const $el = document.createElement("li");
+                $el.textContent = `${key} : ${data.user[key]}`;
+                $newUl.appendChild($el);
+              }
+            }
+
+            document.querySelector("body").appendChild($newSection);
+          });
     }
   });

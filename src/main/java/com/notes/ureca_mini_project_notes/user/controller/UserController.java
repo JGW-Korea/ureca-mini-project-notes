@@ -86,7 +86,10 @@ public class UserController {
         // 세션에 동일한 정보가 있을 경우
 
         // 사용자의 비밀번호의 뒷자리는 보이지 않게 처리를 해준다.
-        userInfo.setPassword(userInfo.getPassword().substring(0, 4) + userInfo.getPassword().substring(4).replaceAll(".", "*"));
+        userInfo.setPassword(
+          userInfo.getPassword().substring(0, 4) + 
+          userInfo.getPassword().substring(4).replaceAll(".", "*")
+        );
         
         // Map에 응답 결과를 저장한다.
         response.put("status", "success");
