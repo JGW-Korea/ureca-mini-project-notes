@@ -5,7 +5,7 @@ if (!auth()) {
   location.href = "/";
 }
 
-document.querySelector("button").addEventListener("click", () => {
+document.querySelector("#logout-btn").addEventListener("click", () => {
   fetch("/user/logout", {
     method: "POST",
   })
