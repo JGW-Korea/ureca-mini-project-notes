@@ -77,3 +77,15 @@ document
           });
     }
   });
+
+// Bootstrap 모달창 열릴 경우 로그인 영역 숨기기
+$(".modal").on("shown.bs.modal", function () {
+  $(".login-container .login-container__card").css("display", "none");
+});
+
+// 모듈창 닫힐 경우 모든 input 입력값 비우기 (jQuery 버전으로 가지고 와서 jQuery 문법밖에 적용 안됨)
+$(".modal").on("hidden.bs.modal", function () {
+  $(".login-container .login-container__card").css("display", "block");
+  $(".error-message-box").text("");
+  $(this).find("input[type='text'], input[type='password']").val("");
+});

@@ -1,6 +1,6 @@
 import { registerInputValueCheck } from "../../module/auth.js";
 
-// 메인 페이지(회원가입)에 대한 JavaScript 코드
+// 2. 메인 페이지(회원가입)에 대한 JavaScript 코드
 
 // input 태그들을 가져온다.
 // const registerModal = document.getElementById("registerModalCenter");
@@ -124,8 +124,3 @@ document
         }
     }
   });
-
-// 모듈창 닫힐 경우 모든 input 입력값 비우기 (jQuery 버전으로 가지고 와서 jQuery 문법밖에 적용 안됨)
-$("#registerModalCenter").on("hidden.bs.modal", function () {
-  $(this).find("input").val("");
-});

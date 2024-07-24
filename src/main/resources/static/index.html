@@ -94,7 +94,12 @@
           >
             회원가입
           </a>
-          <a href="./pages/test/find-id-test.html">아이디 찾기</a>
+          <a
+            href="javascript:voide(0)"
+            data-toggle="modal"
+            data-target="#findUserIdModalCenter"
+            >아이디 찾기</a
+          >
           <a href="./pages/test/find-password-test.html">비밀번호 찾기</a>
         </div>
       </div>
@@ -111,6 +116,7 @@
       <!-- 모달창 영역 -->
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
+          <!-- 모달창 Header 영역 -->
           <div class="modal-header">
             Notes 회원가입
             <button
@@ -122,6 +128,8 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
+
+          <!-- 모달창 Body 영역 -->
           <div class="modal-body">
             <form>
               <input
@@ -151,6 +159,57 @@
     </div>
 
     <!-- 아이디 찾기 모달창 -->
+    <div
+      class="modal fade"
+      id="findUserIdModalCenter"
+      role="dialog"
+      aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true"
+    >
+      <!-- 모달창 영역 -->
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <!-- 모달창 Header 영역 -->
+          <div class="modal-header">
+            Notes 아이디 찾기
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+          <!-- 모달창 Body 영역 -->
+          <div class="modal-body">
+            <form>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                placeholder="이름을 입력해주세요."
+              />
+              <input
+                type="text"
+                name="id"
+                id="id"
+                placeholder="아이디를 입력해주세요."
+              />
+              <input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="비밀번호를 입력해주세요."
+              />
+              <input type="submit" value="회원가입" id="register-btn" />
+            </form>
+            <span class="error-message-box"></span>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- 비밀번호 찾기 모달창 -->
   </body>
