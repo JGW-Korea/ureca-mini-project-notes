@@ -21,6 +21,7 @@ img {
 
 a {
   text-decoration: none;
+  outline: none;
 }
 
 input {
@@ -48,12 +49,15 @@ input[type="submit"] {
   transition: 0.4s;
 }
 
-.error-message-box {
+.message-box {
   display: block;
-  padding: 5px;
+  padding: 5px 0;
   text-align: center;
-  color: #ff2949;
   font-size: 12px;
   font-weight: 600;
-  height: 30px;
+  min-height: 30px;
+}
+
+.message-box.error {
+  color: #ff2949;
 }

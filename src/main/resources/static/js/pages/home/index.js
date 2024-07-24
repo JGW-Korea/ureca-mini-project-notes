@@ -21,29 +21,33 @@ document
     const inputPwd = document.querySelector(".login-container__card #password"); // 비밀번호 input 태그
 
     // 유효성 검사 에러 box 태그
-    const errorMsgElement = document.querySelector(
-      ".login-container__card .error-message-box"
+    const mseBoxElement = document.querySelector(
+      ".login-container__card .message-box"
     );
 
     switch (loginInputValueCheck(inputId.value, inputPwd.value)) {
       // 아이디와 비밀번호 모두 입력하지 않았을 경우
       case "inputEmptyError":
-        errorMsgElement.textContent = "아이디와 비밀번호 모두 입력해주세요.";
+        mseBoxElement.textContent = "아이디와 비밀번호 모두 입력해주세요.";
+        mseBoxElement.classList.add("error");
         inputId.focus();
         break;
 
       case "idEmptyError": // 아이디만 입력하지 않았을 경우
-        errorMsgElement.textContent = "아이디를 입력해주세요.";
+        mseBoxElement.textContent = "아이디를 입력해주세요.";
+        mseBoxElement.classList.add("error");
         inputId.focus();
         break;
 
       case "passwordEmptyError": // 비밀번호만 입력하지 않았을 경우
-        errorMsgElement.textContent = "비밀번호를 입력해주세요.";
+        mseBoxElement.textContent = "비밀번호를 입력해주세요.";
+        mseBoxElement.classList.add("error");
         inputPwd.focus();
         break;
 
       default: // 모두 올바르게 입력되었을 경우
-        errorMsgElement.textContent = "";
+        mseBoxElement.textContent = "";
+        mseBoxElement.classList.remove("error");
 
         // fetch(Ajax)를 통해 서버와 비동기 통신을 한다.
         // 1. /user/login으로 입력된 아이디와 비밀번호를 보내서 DB에 저장된 데이터와 일치하는지 요청을 보낸다.
@@ -64,11 +68,13 @@ document
             // 아이디 또는 비밀번호가 일치하는 않은 경우
             if (["INVALID_ID", "INVALID_PASSWORD"].includes(data.status)) {
               data.status === "INVALID_ID"
-                ? (errorMsgElement.textContent = "존재하지 않는 아이디입니다.")
-                : (errorMsgElement.textContent = "비밀번호가 틀렸습니다.");
+                ? (mseBoxElement.textContent = "존재하지 않는 아이디입니다.")
+                : (mseBoxElement.textContent = "비밀번호가 틀렸습니다.");
+              mseBoxElement.classList.add("error");
             } else {
               // 아이디와 비밀번호가 일치한 경우
-              errorMsgElement.textContent = "";
+              mseBoxElement.textContent = "";
+              mseBoxElement.classList.remove("error");
 
               // 세션 스토리지에 전달받은 userInfo를 저장시킨다.
               sessionStorage.setItem("userInfo", JSON.stringify(data.user));
@@ -86,6 +92,6 @@ $(".modal").on("shown.bs.modal", function () {
 // 모듈창 닫힐 경우 모든 input 입력값 비우기 (jQuery 버전으로 가지고 와서 jQuery 문법밖에 적용 안됨)
 $(".modal").on("hidden.bs.modal", function () {
   $(".login-container .login-container__card").css("display", "block");
-  $(".error-message-box").text("");
+  $(".message-box").empty();
   $(this).find("input[type='text'], input[type='password']").val("");
 });

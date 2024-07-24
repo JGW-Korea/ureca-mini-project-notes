@@ -43,6 +43,7 @@
     <script defer src="./js/pages/home/youtube.js"></script>
     <script type="module" src="./js/pages/home/index.js"></script>
     <script type="module" src="./js/pages/home/register.js"></script>
+    <script type="module" src="./js/pages/home/findId.js"></script>
   </head>
 
   <!-- 메인 페이지 == 로그인 페이지 -->
@@ -81,7 +82,7 @@
 
           <input type="submit" value="로그인" id="login-btn" />
 
-          <span class="error-message-box"></span>
+          <span class="message-box"></span>
         </form>
 
         <!-- 회원 정보 수정 영역 -->
@@ -110,7 +111,7 @@
       class="modal fade"
       id="registerModalCenter"
       role="dialog"
-      aria-labelledby="exampleModalCenterTitle"
+      aria-labelledby="registerModal"
       aria-hidden="true"
     >
       <!-- 모달창 영역 -->
@@ -152,7 +153,7 @@
               />
               <input type="submit" value="회원가입" id="register-btn" />
             </form>
-            <span class="error-message-box"></span>
+            <span class="message-box"></span>
           </div>
         </div>
       </div>
@@ -163,7 +164,7 @@
       class="modal fade"
       id="findUserIdModalCenter"
       role="dialog"
-      aria-labelledby="exampleModalCenterTitle"
+      aria-labelledby="findUserIdModal"
       aria-hidden="true"
     >
       <!-- 모달창 영역 -->
@@ -191,21 +192,18 @@
                 id="name"
                 placeholder="이름을 입력해주세요."
               />
+
               <input
                 type="text"
                 name="id"
                 id="id"
                 placeholder="아이디를 입력해주세요."
               />
-              <input
-                type="password"
-                name="password"
-                id="password"
-                placeholder="비밀번호를 입력해주세요."
-              />
-              <input type="submit" value="회원가입" id="register-btn" />
+
+              <input type="submit" value="아이디 찾기" id="findId-btn" />
             </form>
-            <span class="error-message-box"></span>
+
+            <span class="message-box"></span>
           </div>
         </div>
       </div>

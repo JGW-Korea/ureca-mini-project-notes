@@ -1,33 +1,41 @@
 import { findIdInputValueCheck } from "../../module/auth.js";
 
-// 2. 아이디 찾기 버튼을 클릭했을 경우.
+// 3. 아이디 찾기 버튼을 클릭했을 경우.
+
+// 아이디 찾기에 필요한 태그들을 가져온다.
+const findInputName = document.querySelector("#findUserIdModalCenter #name"); // 아이디를 찾기 위한 이름 입력 input 태그
+const findInputId = document.querySelector("#findUserIdModalCenter #id"); // 아이디를 찾기 위한 이름 입력 input 태그
+const msgBoxElement = document.querySelector(
+  "#findUserIdModalCenter .message-box"
+); // input 태그에 올바른 값을 입력하지 않았을 경우 에러 메세지 출력
+
 document
-  .querySelector(".name-check #name-check-btn")
+  .querySelector("#findUserIdModalCenter #findId-btn")
   .addEventListener("click", (event) => {
     event.preventDefault();
 
-    const inputId = document.querySelector(".name-check #id"); // 아이디를 찾기 위한 이름 입력 input 태그
-    const inputName = document.querySelector(".name-check #name"); // 아이디를 찾기 위한 이름 입력 input 태그
-    const errorMsgElement = document.querySelector(".name--error"); // input 태그에 올바른 값을 입력하지 않았을 경우 에러 메세지 출력
-
-    switch (findIdInputValueCheck(inputId.value, inputName.value)) {
+    switch (findIdInputValueCheck(findInputId.value, findInputName.value)) {
       case "inputEmptyError":
-        errorMsgElement.textContent = "아이디와 이름 모두 입력해주세요.";
-        inputId.focus();
-        break;
-
-      case "idEmptyError": // 아이디만 입력하지 않았을 경우
-        errorMsgElement.textContent = "아이디를 입력해주세요.";
-        inputId.focus();
+        msgBoxElement.textContent = "입력란을 모두 작성해주세요.";
+        msgBoxElement.classList.add("error");
+        findInputId.focus();
         break;
 
       case "nameEmptyError": // 비밀번호만 입력하지 않았을 경우
-        errorMsgElement.textContent = "이름을 입력해주세요.";
-        inputName.focus();
+        msgBoxElement.textContent = "이름을 작성해주세요.";
+        msgBoxElement.classList.add("error");
+        findInputName.focus();
+        break;
+
+      case "idEmptyError": // 아이디만 입력하지 않았을 경우
+        msgBoxElement.textContent = "아이디를 작성해주세요.";
+        msgBoxElement.classList.add("error");
+        findInputId.focus();
         break;
 
       default: // 모두 올바르게 입력되었을 경우
-        errorMsgElement.textContent = "";
+        msgBoxElement.textContent = "";
+        msgBoxElement.classList.remove("error");
 
         fetch("/user/find-id", {
           method: "POST",
@@ -35,31 +43,39 @@ document
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            id: inputId.value,
-            name: inputName.value,
+            id: findInputId.value,
+            name: findInputName.value,
           }),
         })
           .then((res) => res.json())
           .then((data) => {
             if (["INVALID_ID_AND_NAME", "INVALID_NAME"].includes(data.status)) {
+              msgBoxElement.classList.add("error");
               data.status === "INVALID_ID"
-                ? (errorMsgElement.textContent = "존재하지 않는 아이디입니다.")
-                : (errorMsgElement.textContent = "잘못된 이름을 작성했습니다.");
+                ? (msgBoxElement.textContent = "존재하지 않는 아이디입니다.")
+                : (msgBoxElement.textContent = "잘못된 이름을 작성했습니다.");
             } else {
               const $newSection = document.createElement("section");
-              const $newUl = document.createElement("ul");
+              const $newHeader = document.createElement("h3");
+              $newHeader.textContent = `${data.user.name} 사용자님의 정보`;
+              $newSection.appendChild($newHeader);
 
-              $newSection.appendChild($newUl);
-              console.log(data);
               for (const key in data.user) {
-                if (key !== "no") {
-                  const $el = document.createElement("li");
-                  $el.textContent = `${key} : ${data.user[key]}`;
-                  $newUl.appendChild($el);
+                if (!["no", "name"].includes(key)) {
+                  const $newDivision = document.createElement("div");
+                  const $newSpanTitle = document.createElement("span");
+                  const $newSpanDesc = document.createElement("span");
+
+                  $newSpanTitle.textContent = key === "id" ? "id" : "password";
+                  $newSpanDesc.textContent = data.user[key];
+
+                  $newDivision.appendChild($newSpanTitle);
+                  $newDivision.appendChild($newSpanDesc);
+                  $newSection.appendChild($newDivision);
                 }
               }
 
-              document.querySelector("body").appendChild($newSection);
+              msgBoxElement.appendChild($newSection);
             }
           });
     }
