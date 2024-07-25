@@ -1,3 +1,55 @@
 .memo-container {
   margin-top: 45px;
+  height: calc(100vh - 45px);
+  display: flex;
+}
+
+/* 메모 그룹 리스트 영역 */
+.memo-container .memo-group-panel {
+  position: relative;
+  width: 260px;
+  background-color: #fbfbfd;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid rgba(212, 212, 212, 0.6);
+}
+
+.memo-container .memo-group-panel .memo-group-list {
+  flex-grow: 1;
+  /* padding: 10px 10px 0; */
+}
+
+.memo-container .memo-group-panel .memo-group-bottom {
+  position: relative;
+  height: 36px;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+}
+
+.memo-container .memo-group-panel .memo-group-bottom .btn {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  height: 30px;
+  padding: 0 10px;
+  left: 5px;
+  border-radius: 8px;
+}
+
+.memo-container .memo-group-panel .memo-group-bottom .btn:hover {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+.memo-container .memo-group-panel .memo-group-bottom .btn span {
+  display: inline-block;
+  font-size: 15px;
+  font-weight: 600;
+  color: #5292ff;
+}
+
+.memo-container .memo-group-panel .memo-group-bottom .btn span:first-child {
+  margin-right: 5px;
 }

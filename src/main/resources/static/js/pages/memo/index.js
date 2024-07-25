@@ -10,23 +10,23 @@ const userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
 
 const containerElement = document.querySelector(".memo-container");
 
-// 로그인한 사용자의 모든 메모 그룹에 대해서 가져온다.
-fetch(`/memo/group/findAll?no=${userInfo.no}`)
-  .then((res) => res.json())
-  .then((data) => {
-    data.forEach((element) => {
-      const $newGroupDivision = document.createElement("div");
+// // 로그인한 사용자의 모든 메모 그룹에 대해서 가져온다.
+// fetch(`/memo/group/findAll?no=${userInfo.no}`)
+//   .then((res) => res.json())
+//   .then((data) => {
+//     data.forEach((element) => {
+//       const $newGroupDivision = document.createElement("div");
 
-      const $newIconDivision = document.createElement("div");
-      const $newTitleDivision = document.createElement("span");
+//       const $newIconDivision = document.createElement("div");
+//       const $newTitleDivision = document.createElement("span");
 
-      $newIconDivision.classList.add("material-symbols-outlined");
-      $newIconDivision.textContent = "folder";
-      $newTitleDivision.textContent = element.title;
+//       $newIconDivision.classList.add("material-symbols-outlined");
+//       $newIconDivision.textContent = "folder";
+//       $newTitleDivision.textContent = element.title;
 
-      $newGroupDivision.appendChild($newIconDivision);
-      $newGroupDivision.appendChild($newTitleDivision);
+//       $newGroupDivision.appendChild($newIconDivision);
+//       $newGroupDivision.appendChild($newTitleDivision);
 
-      containerElement.appendChild($newGroupDivision);
-    });
-  });
+//       containerElement.appendChild($newGroupDivision);
+//     });
+//   });
