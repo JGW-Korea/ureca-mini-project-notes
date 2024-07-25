@@ -17,6 +17,7 @@
 
 .memo-container .memo-group-panel .memo-group-list-contents {
   flex-grow: 1;
+  overflow: auto;
 }
 
 .memo-container .memo-group-panel .memo-group-list-contents .memo-group-list {
@@ -133,7 +134,7 @@
 /* 메모 그룹 하단 영역 */
 .memo-container .memo-group-panel .memo-group-bottom {
   position: relative;
-  height: 36px;
+  height: 44px;
   padding: 0 10px;
   display: flex;
   align-items: center;
@@ -146,7 +147,7 @@
   cursor: pointer;
   height: 30px;
   padding: 0 10px;
-  left: 5px;
+  left: 10px;
   border-radius: 8px;
 }
 

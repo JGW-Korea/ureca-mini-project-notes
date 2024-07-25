@@ -8,25 +8,44 @@ if (!auth()) {
 // 현재 로그인한 사용자의 세션 정보를 가져온다.
 const userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
 
-const containerElement = document.querySelector(".memo-container");
+const containerElement = document.querySelector(
+  ".memo-container .memo-group-list"
+);
 
 // // 로그인한 사용자의 모든 메모 그룹에 대해서 가져온다.
-// fetch(`/memo/group/findAll?no=${userInfo.no}`)
-//   .then((res) => res.json())
-//   .then((data) => {
-//     data.forEach((element) => {
-//       const $newGroupDivision = document.createElement("div");
+fetch(`/memo/group/findAll?no=${userInfo.no}`)
+  .then((res) => res.json())
+  .then((data) => {
+    // 데이터 정보 : { userNo, groupNo, title }
+    data.forEach((element) => {
+      const $newListContainer = document.createElement("div");
+      $newListContainer.classList.add("memo-group-list-item-container");
 
-//       const $newIconDivision = document.createElement("div");
-//       const $newTitleDivision = document.createElement("span");
+      const $newListItemRow = document.createElement("div");
+      $newListItemRow.classList.add("memo-group-list-item-row");
 
-//       $newIconDivision.classList.add("material-symbols-outlined");
-//       $newIconDivision.textContent = "folder";
-//       $newTitleDivision.textContent = element.title;
+      const $newDiviser = document.createElement("div");
+      $newDiviser.classList.add("chevron");
+      const $newListSelectButton = document.createElement("div");
+      $newListSelectButton.classList.add("memo-group-title-select-button");
 
-//       $newGroupDivision.appendChild($newIconDivision);
-//       $newGroupDivision.appendChild($newTitleDivision);
+      const $newFolderIcon = document.createElement("span");
+      $newFolderIcon.textContent = "folder_open";
+      $newFolderIcon.classList.add("material-symbols-outlined");
+      $newFolderIcon.classList.add("folder-icon");
 
-//       containerElement.appendChild($newGroupDivision);
-//     });
-//   });
+      const $newFolderTitle = document.createElement("span");
+      $newFolderTitle.textContent = element.title;
+      $newFolderTitle.classList.add("folder-title");
+
+      $newListSelectButton.appendChild($newFolderIcon);
+      $newListSelectButton.appendChild($newFolderTitle);
+
+      $newListItemRow.appendChild($newDiviser);
+      $newListItemRow.appendChild($newListSelectButton);
+
+      $newListContainer.appendChild($newListItemRow);
+
+      containerElement.appendChild($newListContainer);
+    });
+  });
