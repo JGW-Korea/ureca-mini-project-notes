@@ -14,7 +14,7 @@ public interface UserDAO {
   public User findUserId(String user) throws SQLException; // 사용자의 아이디, 이름 input 태그에 입력한 값을 SQL where 절에 통해 해당 사용자가 있는지 반환한다.
   
   // 비밀번호 찾기 관련 기능
-  public int findPassword_UserIdCheck (String id) throws SQLException;
+  public User findPassword_UserIdCheck (String id) throws SQLException;
   public int findPassword_UpdatePassword(Map<String, Object> params) throws SQLException;
   
   // 회원가입

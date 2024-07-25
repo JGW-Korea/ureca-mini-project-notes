@@ -43,7 +43,8 @@
     <script defer src="./js/pages/home/youtube.js"></script>
     <script type="module" src="./js/pages/home/index.js"></script>
     <script type="module" src="./js/pages/home/register.js"></script>
-    <script type="module" src="./js/pages/home/findId.js"></script>
+    <script type="module" src="./js/pages/home/findUserId.js"></script>
+    <script type="module" src="./js/pages/home/findUserPassword.js"></script>
   </head>
 
   <!-- 메인 페이지 == 로그인 페이지 -->
@@ -99,9 +100,14 @@
             href="javascript:voide(0)"
             data-toggle="modal"
             data-target="#findUserIdModalCenter"
-            >아이디 찾기</a
-          >
-          <a href="./pages/test/find-password-test.html">비밀번호 찾기</a>
+            >아이디 찾기
+          </a>
+          <a
+            href="javascript:voide(0)"
+            data-toggle="modal"
+            data-target="#findUserPasswordModalCenter"
+            >비밀번호 찾기
+          </a>
         </div>
       </div>
     </main>
@@ -203,5 +209,71 @@
     </div>
 
     <!-- 비밀번호 찾기 모달창 -->
+    <div
+      class="modal fade"
+      id="findUserPasswordModalCenter"
+      role="dialog"
+      aria-labelledby="findUserPasswordModal"
+      aria-hidden="true"
+    >
+      <!-- 모달창 영역 -->
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <!-- 모달창 Header 영역 -->
+          <div class="modal-header">
+            Notes 비밀번호 찾기
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+          <!-- 모달창 Body 영역 -->
+          <div class="modal-body">
+            <form>
+              <input
+                type="text"
+                name="id"
+                id="id"
+                placeholder="아이디를 입력해주세요."
+              />
+
+              <input type="submit" value="다음" id="searchUserInfo-btn" />
+            </form>
+
+            <form>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="수정할 비밀번호를 입력해주세요."
+                disabled
+              />
+
+              <input
+                type="password"
+                name="password-confirm"
+                id="password-confirm"
+                placeholder="다시 한 번 비밀번호를 입력해주세요"
+                disabled
+              />
+
+              <input
+                type="submit"
+                value="비밀번호 수정"
+                id="updateUserPassword-btn"
+                disabled
+              />
+            </form>
+
+            <span class="message-box"></span>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

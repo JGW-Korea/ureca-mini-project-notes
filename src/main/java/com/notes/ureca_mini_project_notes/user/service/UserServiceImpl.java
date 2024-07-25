@@ -27,7 +27,7 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
-  public int findPasswordAndUpdate(String id) throws SQLException {
+  public User findPasswordAndUpdate(String id) throws SQLException {
     return dao.findPassword_UserIdCheck(id);
   }
 

@@ -14,7 +14,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     select * from users where user_name = #{name}
   </select>
   
-  <select id="findPassword_UserIdCheck" parameterType="String" resultType="int">
+  <select id="findPassword_UserIdCheck" parameterType="String" resultType="User">
     select * from users where user_id = #{id}
   </select>
 

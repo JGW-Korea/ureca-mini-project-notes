@@ -12,7 +12,7 @@ public interface UserService {
   public User findId(String user) throws SQLException;
   
   // 비밀번호 찾기(수정) 관련 Service 메서드
-  public int findPasswordAndUpdate(String id) throws SQLException;
+  public User findPasswordAndUpdate(String id) throws SQLException;
   public int findPasswordAndUpdate(String newPassword, String userId) throws SQLException;
 
   // 회원가입

@@ -106,15 +106,24 @@ public class UserController {
 
   // 비밀번호 찾기 관련 Controller
   @PostMapping("/find-password/compare-id") // 입력된 아이디를 DB에 저장되어있는지 찾는다.
-  public int findPasswordCompareId(@RequestParam("id") String id) { // 비밀번호 찾기 컨트롤러
-    int response = 0;
+  public Map<String, Object> findPasswordCompareId(@RequestParam("id") String id) { // 비밀번호 찾기 컨트롤러
+    Map<String, Object> response = new HashMap<>();
 
-    try {
-      response = service.findPasswordAndUpdate(id);
-    } catch (Exception e) {
-      // TODO: handle exception
-      e.printStackTrace();
-    }
+      try {
+
+        User user = service.findPasswordAndUpdate(id);
+
+        if(user == null) {
+          response.put("status", "INVALID_ID");
+        } else {
+          response.put("user", user);
+          response.put("status", "success");
+        }
+
+      } catch (Exception e) {
+        // TODO: handle exception
+        e.printStackTrace();
+      }
     
     return response;
   }
