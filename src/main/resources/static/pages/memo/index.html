@@ -3,10 +3,46 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Notes 메모</title>
+
+    <!-- Meterial Icons CSS Import -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+
+    <!-- CSS 파일 Import -->
+    <link rel="stylesheet" href="../../css/main.css" />
+
     <script type="module" src="../../js/pages/memo/index.js"></script>
   </head>
   <body>
-    <button id="logout-btn">로그아웃</button>
+    <header>
+      <div class="inner">
+        <div class="logo">
+          <img src="../../favicon.png" alt="main-logo" />
+          <span>Notes</span>
+        </div>
+        <span class="title">메모</span>
+
+        <div class="action-button">
+          <span class="material-symbols-outlined"> account_circle </span>
+        </div>
+      </div>
+    </header>
+
+    <section class="memo-container"></section>
+
+    <!-- <div class="memo-container"></div> -->
+
+    <!-- <button id="logout-btn">로그아웃</button> -->
   </body>
 </html>

@@ -7,15 +7,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   
   
   <select id="loginCheckUser" parameterType="User" resultType="User">
-    select * from users where user_id = #{id}
+    select user_no as no, user_id as id, user_password as password, user_name as name from users where user_id = #{id}
   </select>
 
   <select id="findUserId" parameterType="User" resultType="User">
-    select * from users where user_name = #{name}
+    select user_no as no, user_id as id, user_password as password, user_name as name from users where user_name = #{name}
   </select>
   
   <select id="findPassword_UserIdCheck" parameterType="String" resultType="User">
-    select * from users where user_id = #{id}
+    select user_no as no, user_id as id, user_password as password, user_name as name from users where user_id = #{id}
   </select>
 
   <update id="findPassword_UpdatePassword" parameterType="Map">
@@ -23,7 +23,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   </update>
 
   <select id="isUserDuplicate" parameterType="User" resultType="User">
-    select * from users where user_id = #{id} or user_name = #{name}
+    select user_no as no, user_id as id, user_password as password, user_name as name from users where user_id = #{id} or user_name = #{name}
   </select>
 
   <insert id="register" parameterType="User">

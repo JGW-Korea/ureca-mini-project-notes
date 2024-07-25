@@ -2,9 +2,15 @@
 @import url("https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css"); /* 브라우저 CSS 초기화 */
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap"); /* 나눔 고딕 구글 폰트 */
 
-/* 페이지 CSS 불러오기 */
+/* Bootstrap CSS */
+@import url("./pages/bootstrap/modal.css");
+
+/* Main 페이지 CSS */
 @import url("./pages/main/home.css");
-@import url("./pages/main/modal.css");
+
+/* Memo 페이지 CSS */
+@import url("./pages/memo/header.css");
+@import url("./pages/memo/memo.css");
 
 /* 공통 스타일 영역 */
 body {
