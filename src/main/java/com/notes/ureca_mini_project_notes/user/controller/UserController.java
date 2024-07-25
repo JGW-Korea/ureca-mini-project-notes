@@ -82,7 +82,7 @@ public class UserController {
       
       // 클라이언트에서 받아온 이름과 매칭되는 아이디가 없을 경우
       if(userInfo == null) {
-        response.put("status", "INVALID_ID_AND_NAME");
+        response.put("status", "INVALID_NAME");
       } else {
 
         // 매개변수로 받아온 이름과 매칭되는 아이디가 있을 경우
@@ -151,12 +151,15 @@ public class UserController {
     try {
       User userInfo = service.registerFindIdService(user);
 
-      // 아이디, 이름 중복 확인
-      if(userInfo.getId().equals(user.getId())) {
-        response.put("status", "DuplicateIdExists");
-      } else if(userInfo.getName().equals(user.getName())) {
-        response.put("status", "DuplicateNameExists");
-      } else {
+      // 중복된 아이디가 있을 경우
+      if(userInfo != null) {
+        // 아이디, 이름 중복 확인
+        if(userInfo.getId().equals(user.getId())) {
+          response.put("status", "DuplicateIdExists");
+        } else if(userInfo.getName().equals(user.getName())) {
+          response.put("status", "DuplicateNameExists");
+      }
+    } else {
         // 중복된 아이디가 없을 경우 아이디 생성
         service.registerService(user);
         response.put("status", "success");

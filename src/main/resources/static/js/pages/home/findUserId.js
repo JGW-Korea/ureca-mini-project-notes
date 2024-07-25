@@ -26,12 +26,9 @@ document
         .then((data) => {
           if (data.status === "INVALID_NAME") {
             msgBoxElement.classList.add("error");
-            msgBoxElement.textContent = "존재하지 않는 이름을 작성했습니다.";
+            msgBoxElement.textContent = "존재하지 않는 이름입니다.";
           } else {
             const $newSection = document.createElement("section");
-            const $newHeader = document.createElement("h3");
-            $newHeader.textContent = `${data.user.name} 사용자님의 정보`;
-            $newSection.appendChild($newHeader);
 
             for (const key in data.user) {
               if (!["no", "name"].includes(key)) {
@@ -40,7 +37,7 @@ document
                 const $newSpanDesc = document.createElement("span");
 
                 $newSpanTitle.textContent =
-                  key === "id" ? "아이디" : "비밀번호";
+                  key === "id" ? "아이디: " : "비밀번호: ";
                 $newSpanDesc.textContent = data.user[key];
 
                 $newDivision.appendChild($newSpanTitle);
