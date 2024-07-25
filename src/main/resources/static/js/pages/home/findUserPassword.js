@@ -87,62 +87,54 @@ document
     }
   });
 
-// // 수정할 비밀번호를 입력했을 경우
-// document
-//   .querySelector(".password-update [type='submit']")
-//   .addEventListener("click", (event) => {
-//     event.preventDefault();
+// 수정할 비밀번호를 입력했을 경우
+document
+  .querySelector("#findUserPasswordModalCenter #updateUserPassword-btn")
+  .addEventListener("click", (event) => {
+    event.preventDefault();
 
-//     const updatePassword = document.querySelector(".password-update #password");
-//     const updatePasswordConfirm = document.querySelector(
-//       ".password-update #password-confirm"
-//     );
+    switch (
+      updatePasswordCheck(
+        findInputPassword.value,
+        findInputPasswordConfirm.value
+      )
+    ) {
+      case "inputEmptyError":
+        msgBoxElement.textContent = "비밀번호 입력란 모두 입력해주세요.";
+        msgBoxElement.classList.add("error");
+        findInputPassword.focus();
+        break;
 
-//     const errorMsgElement = document.querySelector(
-//       ".password-update-error-box"
-//     );
+      case "passwordEmptyError":
+        msgBoxElement.textContent = "새로운 비밀번호를 입력해주세요.";
+        msgBoxElement.classList.add("error");
+        findInputPassword.focus();
+        break;
 
-//     switch (
-//       updatePasswordCheck(updatePassword.value, updatePasswordConfirm.value)
-//     ) {
-//       case "inputEmptyError":
-//         errorMsgElement.textContent = "비밀번호 입력창 모두 입력해주세요.";
-//         updatePassword.focus();
-//         break;
+      case "confimPasswordEmptyError":
+        msgBoxElement.textContent = "새로운 비밀번호 확인 부분을 입력해주세요.";
+        msgBoxElement.classList.add("error");
+        findInputPasswordConfirm.focus();
+        break;
 
-//       case "passwordEmptyError":
-//         errorMsgElement.textContent = "수정하고 싶은 비밀번호를 입력해주세요.";
-//         updatePassword.focus();
-//         break;
+      case "passwordDoNotMatchError":
+        msgBoxElement.textContent = "비밀번호가 일치하지 않습니다. ";
+        msgBoxElement.classList.add("error");
+        findInputPasswordConfirm.focus();
+        break;
 
-//       case "regexNotMatchError":
-//         errorMsgElement.textContent =
-//           "비밀번호는 최소 8자에서 16자까지, 영문자, 숫자 및 특수 문자를 포함해야 합니다.";
-//         updatePassword.focus();
-//         break;
-
-//       case "confimPasswordEmptyError":
-//         errorMsgElement.textContent = "비밀번호 확인란을 입력해주세요.";
-//         updatePasswordConfirm.focus();
-//         break;
-
-//       case "passwordDoNotMatchError":
-//         errorMsgElement.textContent = "동일한 비밀번호를 입력해야 합니다.";
-//         updatePasswordConfirm.focus();
-//         break;
-
-//       default:
-//         errorMsgElement.textContent = "";
-
-//         fetch(
-//           `/user/find-password/update-password?password=${updatePassword.value}&user=${userInfo}`,
-//           {
-//             method: "POST",
-//           }
-//         )
-//           .then((res) => res.text())
-//           .then((data) => {
-//             location.href = "/";
-//           });
-//     }
-//   });
+      default:
+        msgBoxElement.textContent = "";
+        msgBoxElement.classList.remove("error");
+        fetch(
+          `/user/find-password/update-password?password=${findInputPassword.value}&user=${userInfo.id}`,
+          {
+            method: "POST",
+          }
+        )
+          .then((res) => res.text())
+          .then((data) => {
+            location.href = "/";
+          });
+    }
+  });
