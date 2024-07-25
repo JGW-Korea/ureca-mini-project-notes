@@ -15,11 +15,122 @@
   border-right: 1px solid rgba(212, 212, 212, 0.6);
 }
 
-.memo-container .memo-group-panel .memo-group-list {
+.memo-container .memo-group-panel .memo-group-list-contents {
   flex-grow: 1;
-  /* padding: 10px 10px 0; */
 }
 
+.memo-container .memo-group-panel .memo-group-list-contents .memo-group-list {
+  padding: 10px 10px 0;
+}
+
+.memo-container
+  .memo-group-panel
+  .memo-group-list-contents
+  .memo-group-list
+  .memo-group-list-item-container {
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 5px;
+}
+
+.memo-container
+  .memo-group-panel
+  .memo-group-list-contents
+  .memo-group-list
+  .memo-group-list-item-container:last-child {
+  margin-bottom: 0;
+}
+
+.memo-container
+  .memo-group-panel
+  .memo-group-list-contents
+  .memo-group-list
+  .memo-group-list-item-container
+  .memo-group-list-item-row {
+  height: 32px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.memo-container
+  .memo-group-panel
+  .memo-group-list-contents
+  .memo-group-list
+  .memo-group-list-item-container
+  .memo-group-list-item-row:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+.memo-container
+  .memo-group-panel
+  .memo-group-list-contents
+  .memo-group-list
+  .memo-group-list-item-container
+  .memo-group-list-item-row.selected {
+  background-color: rgba(120, 120, 128, 0.16);
+}
+
+.memo-container
+  .memo-group-panel
+  .memo-group-list-contents
+  .memo-group-list
+  .memo-group-list-item-container
+  .memo-group-list-item-row.selected:hover {
+  background-color: rgba(0, 0, 0, 0.16);
+}
+
+.memo-container
+  .memo-group-panel
+  .memo-group-list-contents
+  .memo-group-list
+  .memo-group-list-item-container
+  .memo-group-list-item-row
+  .chevron {
+  padding: 7px 6px;
+  cursor: pointer;
+}
+
+.memo-container
+  .memo-group-panel
+  .memo-group-list-contents
+  .memo-group-list
+  .memo-group-list-item-container
+  .memo-group-list-item-row
+  .memo-group-title-select-button {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.memo-container
+  .memo-group-panel
+  .memo-group-list-contents
+  .memo-group-list
+  .memo-group-list-item-container
+  .memo-group-list-item-row
+  .memo-group-title-select-button
+  .folder-icon {
+  margin-right: 7px;
+  font-size: 20px;
+  color: #5292ff;
+}
+
+.memo-container
+  .memo-group-panel
+  .memo-group-list-contents
+  .memo-group-list
+  .memo-group-list-item-container
+  .memo-group-list-item-row
+  .memo-group-title-select-button
+  .folder-title {
+  margin-top: 2.6px;
+}
+
+/* 메모 그룹 하단 영역 */
 .memo-container .memo-group-panel .memo-group-bottom {
   position: relative;
   height: 36px;
