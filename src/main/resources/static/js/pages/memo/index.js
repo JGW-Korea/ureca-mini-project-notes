@@ -8,9 +8,11 @@ if (!auth()) {
 // 현재 로그인한 사용자의 세션 정보를 가져온다.
 const userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
 
-const containerElement = document.querySelector(
+const memoGroupContainer = document.querySelector(
   ".memo-container .memo-group-list"
 );
+
+const groupMemoList = document.querySelector(".memo-lists .memo-list");
 
 // 로그인한 사용자의 모든 메모 그룹에 대해서 가져온다.
 fetch(`/memo/group/findAll?no=${userInfo.no}`)
@@ -49,13 +51,70 @@ fetch(`/memo/group/findAll?no=${userInfo.no}`)
       $newListContainer.appendChild($newListItemRow);
       $newListContainer.dataset.groupNo = element.groupNo;
 
-      containerElement.appendChild($newListContainer);
+      memoGroupContainer.appendChild($newListContainer);
     });
 
     // 각 그룹에 해당하는 모든 메모 데이터들을 가져온다.
-    data.forEach((element) => {
-      fetch(`/memo/findAll?no=${element.groupNo}`)
+    const promises = data.map((list, i) => {
+      return fetch(`/memo/findAll?no=${list.groupNo}`)
         .then((res) => res.json())
-        .then((data) => console.log(data));
+        .then((listElement) => {
+          listElement.forEach((item, j) => {
+            console.log(item);
+            const $newMemoItemContainer = document.createElement("div");
+            $newMemoItemContainer.classList.add("memo-list-item-container");
+
+            const $newGutter = document.createElement("div");
+            $newGutter.classList.add("gutter");
+            const $newContent = document.createElement("div");
+            $newContent.classList.add("content");
+
+            const $newTitle = document.createElement("div");
+            $newTitle.classList.add("title");
+            $newTitle.textContent = item.title;
+            const $newSummary = document.createElement("div");
+            $newSummary.classList.add("summary");
+            const $newGroupListItem = document.createElement("div");
+            $newGroupListItem.classList.add("group-list-items");
+
+            const $newDate = document.createElement("div");
+            $newDate.classList.add("date");
+            const $newSnippet = document.createElement("div");
+            $newSnippet.classList.add("snippet");
+            $newSnippet.textContent = item.content;
+
+            $newSummary.appendChild($newDate);
+            $newSummary.appendChild($newSnippet);
+
+            const $newFolderIcon = document.createElement("span");
+            $newFolderIcon.classList.add("material-symbols-outlined");
+            $newFolderIcon.classList.add("folder-icon");
+            $newFolderIcon.textContent = "folder";
+
+            const $newGroupTitle = document.createElement("span");
+            $newGroupTitle.textContent = list.title;
+
+            $newGroupListItem.appendChild($newFolderIcon);
+            $newGroupListItem.appendChild($newGroupTitle);
+
+            $newContent.appendChild($newTitle);
+            $newContent.appendChild($newSummary);
+            $newContent.appendChild($newGroupListItem);
+
+            $newMemoItemContainer.appendChild($newGutter);
+            $newMemoItemContainer.appendChild($newContent);
+            $newMemoItemContainer.dataset.memoNo = item.memoNo;
+
+            groupMemoList.appendChild($newMemoItemContainer);
+          });
+        });
+    });
+
+    // 모든 fetch 요청이 완료되면 첫 번째 요소에 'selected' 클래스를 추가한다.
+    Promise.all(promises).then(() => {
+      const firstItem = document.querySelector(".memo-list-item-container");
+      if (firstItem) {
+        firstItem.classList.add("selected");
+      }
     });
   });

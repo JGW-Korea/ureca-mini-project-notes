@@ -18,6 +18,12 @@
 .memo-container .memo-group-panel .memo-group-list-contents {
   flex-grow: 1;
   overflow: auto;
+  -ms-overflow-style: none; /* 익스플로러, 앳지 */
+  scrollbar-width: none; /* 파이어폭스 */
+}
+
+.memo-container .memo-group-panel .memo-group-list-contents::-webkit-scrollbar {
+  display: none; /* 크롬, 사파리, 오페라 */
 }
 
 .memo-container .memo-group-panel .memo-group-list-contents .memo-group-list {
@@ -205,6 +211,12 @@
 .memo-container .memo-lists .memo-list-content {
   flex-grow: 1;
   overflow: auto;
+  -ms-overflow-style: none; /* 익스플로러, 앳지 */
+  scrollbar-width: none; /* 파이어폭스 */
+}
+
+.memo-container .memo-lists .memo-list-content::-webkit-scrollbar {
+  display: none; /* 크롬, 사파리, 오페라 */
 }
 
 .memo-container .memo-lists .memo-list-content .memo-list {
