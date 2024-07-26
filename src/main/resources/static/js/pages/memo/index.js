@@ -16,9 +16,15 @@ const containerElement = document.querySelector(
 fetch(`/memo/group/findAll?no=${userInfo.no}`)
   .then((res) => res.json())
   .then((data) => {
-    // 각 그룹에 해당하는 모든 메모 데이터들을 가져온다.
-
     // 데이터 정보 : { userNo, groupNo, title }
+    // 각 그룹에 해당하는 모든 메모 데이터들을 가져온다.
+    data.forEach((element) => {
+      fetch(`/memo/findAll?no=${element.groupNo}`)
+        .then((res) => res.text())
+        .then((data) => console.log(data));
+    });
+
+    // 그룹 영역을 생성시킨다.
     data.forEach((element) => {
       const $newListContainer = document.createElement("div");
       $newListContainer.classList.add("memo-group-list-item-container");
