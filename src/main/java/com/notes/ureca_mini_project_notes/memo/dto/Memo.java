@@ -5,16 +5,16 @@ public class Memo {
   private int groupNo;
   private int memoNo;
   private String title;
-  private String desc;
+  private String content;
 
   public Memo() {
   }
   
-  public Memo(int groupNo, int memoNo, String title, String desc) {
+  public Memo(int groupNo, int memoNo, String title, String content) {
     this.groupNo = groupNo;
     this.memoNo = memoNo;
     this.title = title;
-    this.desc = desc;
+    this.content = content;
   }
 
   public int getGroupNo() {
@@ -41,12 +41,12 @@ public class Memo {
     this.title = title;
   }
 
-  public String getDesc() {
-    return desc;
+  public String getcontent() {
+    return content;
   }
 
-  public void setDesc(String desc) {
-    this.desc = desc;
+  public void setcontent(String content) {
+    this.content = content;
   }
 
 }

@@ -12,17 +12,11 @@ const containerElement = document.querySelector(
   ".memo-container .memo-group-list"
 );
 
-// // 로그인한 사용자의 모든 메모 그룹에 대해서 가져온다.
+// 로그인한 사용자의 모든 메모 그룹에 대해서 가져온다.
 fetch(`/memo/group/findAll?no=${userInfo.no}`)
   .then((res) => res.json())
   .then((data) => {
     // 데이터 정보 : { userNo, groupNo, title }
-    // 각 그룹에 해당하는 모든 메모 데이터들을 가져온다.
-    data.forEach((element) => {
-      fetch(`/memo/findAll?no=${element.groupNo}`)
-        .then((res) => res.text())
-        .then((data) => console.log(data));
-    });
 
     // 그룹 영역을 생성시킨다.
     data.forEach((element) => {
@@ -56,5 +50,12 @@ fetch(`/memo/group/findAll?no=${userInfo.no}`)
       $newListContainer.dataset.groupNo = element.groupNo;
 
       containerElement.appendChild($newListContainer);
+    });
+
+    // 각 그룹에 해당하는 모든 메모 데이터들을 가져온다.
+    data.forEach((element) => {
+      fetch(`/memo/findAll?no=${element.groupNo}`)
+        .then((res) => res.json())
+        .then((data) => console.log(data));
     });
   });

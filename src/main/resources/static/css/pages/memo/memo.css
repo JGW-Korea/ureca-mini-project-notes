@@ -4,7 +4,7 @@
   display: flex;
 }
 
-/* 메모 그룹 리스트 영역 */
+/* 메모 그룹 영역 스타일 작업 */
 .memo-container .memo-group-panel {
   position: relative;
   width: 260px;
@@ -164,4 +164,49 @@
 
 .memo-container .memo-group-panel .memo-group-bottom .btn span:first-child {
   margin-right: 5px;
+}
+
+/* 메모장 리스트 영역 스타일 작업 */
+.memo-container .memo-lists {
+  width: 320px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid rgba(212, 212, 212, 0.6);
+}
+
+.memo-container .memo-lists .memo-search .memo-search-content {
+  display: flex;
+  align-items: center;
+  height: 32px;
+  margin: 10px;
+  background-color: rgb(230, 230, 231);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.memo-container .memo-lists .memo-search .material-symbols-outlined {
+  font-size: 22px;
+  color: rgba(0, 0, 0, 0.56);
+  padding-left: 8px;
+}
+
+.memo-container .memo-lists .memo-search input[type="text"] {
+  flex-grow: 1;
+  background-color: inherit;
+  border: none;
+  padding: 0;
+  margin: 0;
+  padding-left: 5px;
+  height: 100%;
+  font-size: 15px;
+}
+
+.memo-container .memo-lists .memo-list-content {
+  flex-grow: 1;
+  overflow: auto;
+}
+
+.memo-container .memo-lists .memo-list-content .memo-list {
+  padding: 0 10px 10px;
 }

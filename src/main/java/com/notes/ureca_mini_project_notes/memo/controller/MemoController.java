@@ -25,7 +25,7 @@ public class MemoController {
     List<Memo> response = new ArrayList<>();
 
     try {
-      service.findAllMemo(no);
+      response = service.findAllMemo(no);
     } catch (Exception e) {
       // TODO: handle exception
       e.printStackTrace();
