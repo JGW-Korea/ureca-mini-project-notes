@@ -32,7 +32,7 @@ fetch(`/memo/group/findAll?no=${userInfo.no}`)
       $newListSelectButton.classList.add("memo-group-title-select-button");
 
       const $newFolderIcon = document.createElement("span");
-      $newFolderIcon.textContent = "folder_open";
+      $newFolderIcon.textContent = "folder";
       $newFolderIcon.classList.add("material-symbols-outlined");
       $newFolderIcon.classList.add("folder-icon");
 

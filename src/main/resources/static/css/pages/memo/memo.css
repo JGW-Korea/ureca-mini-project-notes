@@ -12,7 +12,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  border-right: 1px solid rgba(212, 212, 212, 0.6);
+  border-right: 1px solid rgba(137, 137, 151, 0.16);
 }
 
 .memo-container .memo-group-panel .memo-group-list-contents {
@@ -61,7 +61,7 @@
   .memo-group-list
   .memo-group-list-item-container
   .memo-group-list-item-row:hover {
-  background-color: rgba(0, 0, 0, 0.04);
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 .memo-container
@@ -70,7 +70,7 @@
   .memo-group-list
   .memo-group-list-item-container
   .memo-group-list-item-row.selected {
-  background-color: rgba(120, 120, 128, 0.16);
+  background-color: rgba(137, 137, 151, 0.16);
 }
 
 .memo-container
@@ -79,7 +79,7 @@
   .memo-group-list
   .memo-group-list-item-container
   .memo-group-list-item-row.selected:hover {
-  background-color: rgba(0, 0, 0, 0.16);
+  background-color: rgba(0, 0, 0, 0.09);
 }
 
 .memo-container
@@ -180,7 +180,7 @@
   align-items: center;
   height: 32px;
   margin: 10px;
-  background-color: rgb(230, 230, 231);
+  background-color: rgba(137, 137, 151, 0.16);
   border-radius: 10px;
   overflow: hidden;
 }
@@ -193,7 +193,7 @@
 
 .memo-container .memo-lists .memo-search input[type="text"] {
   flex-grow: 1;
-  background-color: inherit;
+  background-color: transparent;
   border: none;
   padding: 0;
   margin: 0;
@@ -209,4 +209,165 @@
 
 .memo-container .memo-lists .memo-list-content .memo-list {
   padding: 0 10px 10px;
+}
+
+.memo-container
+  .memo-lists
+  .memo-list-content
+  .memo-list
+  .memo-list-item-container {
+  border-radius: 8px;
+  box-sizing: border-box;
+  display: flex;
+  font-size: 15px;
+  font-weight: 400;
+  padding: 10px;
+  width: 300px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  position: relative;
+}
+
+.memo-container
+  .memo-lists
+  .memo-list-content
+  .memo-list
+  .memo-list-item-container:last-child {
+  margin-bottom: 0;
+}
+
+.memo-container
+  .memo-lists
+  .memo-list-content
+  .memo-list
+  .memo-list-item-container.selected {
+  background-color: rgba(137, 137, 151, 0.16);
+}
+
+.memo-container
+  .memo-lists
+  .memo-list-content
+  .memo-list
+  .memo-list-item-container.selected:hover {
+  background-color: rgba(86, 86, 97, 0.16);
+}
+
+.memo-container
+  .memo-lists
+  .memo-list-content
+  .memo-list
+  .memo-list-item-container:hover {
+  background-color: rgba(185, 185, 203, 0.16);
+}
+
+.memo-container
+  .memo-lists
+  .memo-list-content
+  .memo-list
+  .memo-list-item-container::after {
+  content: "";
+  position: absolute;
+  height: 1px;
+  background-color: #e8e8eb;
+  left: 27px;
+  bottom: 0;
+  width: 267px;
+}
+
+.memo-container
+  .memo-lists
+  .memo-list-content
+  .memo-list
+  .memo-list-item-container
+  .gutter {
+  width: 17px;
+  margin-right: 6px;
+}
+
+.memo-container
+  .memo-lists
+  .memo-list-content
+  .memo-list
+  .memo-list-item-container
+  .content {
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+.memo-container
+  .memo-lists
+  .memo-list-content
+  .memo-list
+  .memo-list-item-container
+  .content
+  .title {
+  color: rgba(0, 0, 0, 0.88);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.memo-container
+  .memo-lists
+  .memo-list-content
+  .memo-list
+  .memo-list-item-container
+  .content
+  .summary {
+  display: flex;
+  font-size: 15px;
+  text-align: left;
+  overflow: hidden;
+}
+
+.memo-container
+  .memo-lists
+  .memo-list-content
+  .memo-list
+  .memo-list-item-container
+  .content
+  .summary
+  .date {
+  flex: 0 0 43px;
+  margin-right: 6px;
+}
+
+.memo-container
+  .memo-lists
+  .memo-list-content
+  .memo-list
+  .memo-list-item-container
+  .content
+  .summary
+  .snippet {
+  flex-grow: 1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  color: rgba(0, 0, 0, 0.56);
+}
+
+.memo-container
+  .memo-lists
+  .memo-list-content
+  .memo-list
+  .memo-list-item-container
+  .content
+  .group-list-items {
+  display: flex;
+  align-items: center;
+  color: rgba(0, 0, 0, 0.56);
+  font-size: 14px;
+  line-height: 14px;
+}
+
+.memo-container
+  .memo-lists
+  .memo-list-content
+  .memo-list
+  .memo-list-item-container
+  .content
+  .group-list-items
+  .folder-icon {
+  font-size: 20px;
+  margin-right: 5px;
 }
