@@ -16,6 +16,8 @@ const containerElement = document.querySelector(
 fetch(`/memo/group/findAll?no=${userInfo.no}`)
   .then((res) => res.json())
   .then((data) => {
+    // 각 그룹에 해당하는 모든 메모 데이터들을 가져온다.
+
     // 데이터 정보 : { userNo, groupNo, title }
     data.forEach((element) => {
       const $newListContainer = document.createElement("div");
@@ -45,6 +47,7 @@ fetch(`/memo/group/findAll?no=${userInfo.no}`)
       $newListItemRow.appendChild($newListSelectButton);
 
       $newListContainer.appendChild($newListItemRow);
+      $newListContainer.dataset.groupNo = element.groupNo;
 
       containerElement.appendChild($newListContainer);
     });
