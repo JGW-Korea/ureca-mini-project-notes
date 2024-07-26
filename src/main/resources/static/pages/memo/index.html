@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="../../css/main.css" />
 
     <script type="module" src="../../js/pages/memo/index.js"></script>
+    <!-- <script defer src="../../js/pages/memo/memoGroupClickEvnet.js"></script> -->
   </head>
   <body>
     <header>
@@ -64,39 +65,24 @@
       </div>
 
       <!-- 각 그룹에 해당하는 메모장 리스트 레이아웃 정의 -->
-      <div class="memo-lists">
-        <div class="memo-search">
-          <div class="memo-search-content">
-            <span class="material-symbols-outlined"> search </span>
-            <input type="text" placeholder="모든 메모 검색하기" />
-          </div>
-        </div>
-        <div class="memo-list-content">
-          <div class="memo-list">
-            <!-- 모든 메모 그룹에 해당하는 영역 -->
-            <!-- <div class="memo-list-item-container selected">
-              <div class="gutter"></div>
-              <div class="content">
-                <div class="title">새로운 메모</div>
-                <div class="summary">
-                  <div class="date">수요일</div>
-                  <div class="snippet">
-                    가나다라마바사아자차카타파하가나다라마바사아자차카타파하
-                  </div>
-                </div>
-                <div class="group-list-items">
-                  <span class="material-symbols-outlined folder-icon">
-                    folder
-                  </span>
-                  <span>메모</span>
-                </div>
-              </div>
-            </div> -->
-          </div>
-        </div>
-      </div>
 
-      <div class="memo-contents"></div>
+      <div class="memo-list-contents">
+        <div class="memo-lists">
+          <div class="memo-search">
+            <div class="memo-search-content">
+              <span class="material-symbols-outlined"> search </span>
+              <input type="text" placeholder="모든 메모 검색하기" />
+            </div>
+          </div>
+          <div class="memo-list-content">
+            <div class="memo-list">
+              <!-- 모든 메모 그룹에 해당하는 영역 -->
+            </div>
+          </div>
+        </div>
+
+        <div class="memo-contents"></div>
+      </div>
     </section>
 
     <!-- <div class="memo-container"></div> -->

@@ -34,4 +34,19 @@ public class MemoController {
     return response;
   }
 
+  @GetMapping("/find")
+  public List<Memo> findUserMemoGroupPages(@RequestParam("no") int no) {
+    
+    List<Memo> response = new ArrayList<>();
+
+    try {
+      response = service.findAllMemo(no);
+    } catch (Exception e) {
+      // TODO: handle exception
+      e.printStackTrace();
+    }
+    
+    return response;
+  }
+
 }

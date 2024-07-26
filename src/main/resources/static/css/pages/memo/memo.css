@@ -172,6 +172,12 @@
   margin-right: 5px;
 }
 
+.memo-container .memo-list-contents {
+  flex-grow: 1;
+  height: 100%;
+  display: flex;
+}
+
 /* 메모장 리스트 영역 스타일 작업 */
 .memo-container .memo-lists {
   width: 320px;
@@ -382,4 +388,8 @@
   .folder-icon {
   font-size: 20px;
   margin-right: 5px;
+}
+
+.memo-list-contents .memo-contents {
+  flex-grow: 1;
 }
