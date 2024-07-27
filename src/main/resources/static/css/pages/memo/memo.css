@@ -414,7 +414,17 @@
   height: calc(100% - 40px);
 }
 
-/*  */
+/* Memo Editor 스크롤 영역 */
+.memo-contents .memo-list-content::-webkit-scrollbar,
+.memo-contents .ql-editor::-webkit-scrollbar {
+  display: none;
+}
+
+.memo-contents .memo-list-content.show-scrollbar::-webkit-scrollbar,
+.memo-contents .ql-editor.show-scrollbar::-webkit-scrollbar {
+  display: block;
+}
+
 /* 스크롤바 전체 스타일 */
 ::-webkit-scrollbar {
   width: 8px; /* 스크롤바의 너비 */
@@ -435,13 +445,4 @@
 /* 스크롤바 핸들 호버 시 */
 ::-webkit-scrollbar-thumb:hover {
   background: #b0b0b0; /* 호버 시 색상 변경 */
-}
-
-/* 스크롤하지 않을 때 스크롤바 숨기기 */
-.memo-contents:hover::-webkit-scrollbar-thumb {
-  background: #b0b0b0; /* 스크롤 시 핸들 색상 */
-}
-
-.memo-contents::-webkit-scrollbar-thumb {
-  background: transparent; /* 스크롤하지 않을 때 핸들 색상 */
 }

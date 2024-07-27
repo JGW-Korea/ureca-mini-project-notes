@@ -36,8 +36,10 @@
     ></script>
 
     <script type="module" src="../../js/pages/memo/index.js"></script>
-    <script defer src="../../js/pages/memo/quill.js"></script>
+    <script type="module" src="../../js/pages/memo/quill.js"></script>
+    <script defer src="../../js/pages/memo/scroll.js"></script>
   </head>
+
   <body>
     <header>
       <div class="inner">
@@ -91,7 +93,7 @@
               <input type="text" placeholder="모든 메모 검색하기" />
             </div>
           </div>
-          <div class="memo-list-content">
+          <div class="memo-list-content scroll-event">
             <div class="memo-list">
               <!-- 모든 메모 그룹에 해당하는 영역 -->
             </div>
@@ -103,8 +105,6 @@
         </div>
       </div>
     </section>
-
-    <!-- <div class="memo-container"></div> -->
 
     <!-- <button id="logout-btn">로그아웃</button> -->
   </body>

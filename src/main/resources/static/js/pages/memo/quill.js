@@ -16,3 +16,7 @@ const quill = new Quill("#editor", {
 
   theme: "snow",
 });
+
+export const setContent = (content) => {
+  quill.setContents([{ insert: content }]);
+};

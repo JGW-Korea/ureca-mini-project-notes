@@ -1,4 +1,5 @@
 import { auth } from "../../module/auth.js";
+import { setContent } from "./quill.js";
 
 // 현재 해당 URL로 접근한 사용자가 로그인을 하지 않은 경우 메인 페이지로 돌려 보낸다.
 if (!auth()) {
@@ -14,6 +15,7 @@ const memoGroupContainer = document.querySelector(
 
 const groupMemoList = document.querySelector(".memo-container .memo-list");
 const $memoListAll = [];
+const memoContents = {}; // 각 메모 번호에 맞는 desc 내용을 저장하는 객체
 
 // 메모 그룹을 가져오는 비동기 작업
 async function fetchMemoGroups(userNo) {
@@ -69,7 +71,7 @@ async function handleMemoGroups() {
     const memos = await fetchMemos(element.groupNo);
 
     // 가져온 모든 메모장들을 요소로 변환시킨 후 HTML 문서에 적용시킨다.
-    memos.forEach((memo) => {
+    memos.forEach((memo, idx) => {
       const $newMemoItemContainer = document.createElement("div");
       $newMemoItemContainer.classList.add("memo-list-item-container");
 
@@ -122,6 +124,8 @@ async function handleMemoGroups() {
     document
       .querySelectorAll(".memo-container .memo-list-item-container")[0]
       .classList.add("selected");
+
+    setContent("Hello");
   }
 
   let seletedMemoGroup; // 선택한 메모 그룹에 대한 정보
@@ -206,6 +210,8 @@ async function handleMemoGroups() {
 
                 event.currentTarget.classList.add("selected");
                 seletedMemo = event.currentTarget;
+
+                console.log(event.currentTarget);
               });
             });
         }
@@ -224,6 +230,8 @@ async function handleMemoGroups() {
 
         event.currentTarget.classList.add("selected");
         seletedMemo = event.currentTarget;
+
+        console.log(event.currentTarget);
       });
     });
 }
