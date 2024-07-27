@@ -71,7 +71,7 @@ async function handleMemoGroups() {
     const memos = await fetchMemos(element.groupNo);
 
     // 가져온 모든 메모장들을 요소로 변환시킨 후 HTML 문서에 적용시킨다.
-    memos.forEach((memo, idx) => {
+    memos.forEach((memo) => {
       const $newMemoItemContainer = document.createElement("div");
       $newMemoItemContainer.classList.add("memo-list-item-container");
 
@@ -118,15 +118,18 @@ async function handleMemoGroups() {
 
       $memoListAll.push($newMemoItemContainer);
       groupMemoList.appendChild($newMemoItemContainer);
+
+      memoContents[memo.memoNo] = memo.content;
     });
-
-    // 가장 먼저 가져온 메모장을 자동으로 선택한다.
-    document
-      .querySelectorAll(".memo-container .memo-list-item-container")[0]
-      .classList.add("selected");
-
-    setContent("Hello");
   }
+
+  // 가장 먼저 가져온 메모장을 자동으로 선택한다.
+  const memoList = document.querySelector(
+    ".memo-container .memo-list-item-container"
+  );
+
+  memoList.classList.add("selected");
+  setContent(memoContents[memoList.dataset.memoNo], memoList.dataset.memoNo);
 
   let seletedMemoGroup; // 선택한 메모 그룹에 대한 정보
   let seletedMemo; // 선택한 메모 그룹에 속한 메모장들에 대한 정보
@@ -157,16 +160,23 @@ async function handleMemoGroups() {
         // 선택한 그룹의 data-group-no 번호를 가져온다. (Memo Table의 외래키이기 때문)
         const groupNo = event.currentTarget.dataset.groupNo;
 
-        if (groupNo === "0")
+        if (groupNo === "0") {
           $memoListAll.forEach((list) => groupMemoList.appendChild(list));
-        else {
+          setContent(
+            memoContents[$memoListAll[0].dataset.memoNo],
+            memoList.dataset.memoNo
+          );
+        } else {
           const memos = await fetchMemos(groupNo);
 
           memos.forEach((memo, idx) => {
             const $newMemoItemContainer = document.createElement("div");
             $newMemoItemContainer.classList.add("memo-list-item-container");
 
-            if (idx === 0) $newMemoItemContainer.classList.add("selected");
+            if (idx === 0) {
+              $newMemoItemContainer.classList.add("selected");
+              setContent(memoContents[memo.memoNo], memo.memoNo);
+            }
 
             const $newGutter = document.createElement("div");
             $newGutter.classList.add("gutter");
@@ -211,8 +221,13 @@ async function handleMemoGroups() {
                 event.currentTarget.classList.add("selected");
                 seletedMemo = event.currentTarget;
 
-                console.log(event.currentTarget);
+                setContent(
+                  memoContents[event.currentTarget.dataset.memoNo],
+                  event.currentTarget.dataset.memoNo
+                );
               });
+
+              memo.addEventListener;
             });
         }
       });
@@ -231,7 +246,10 @@ async function handleMemoGroups() {
         event.currentTarget.classList.add("selected");
         seletedMemo = event.currentTarget;
 
-        console.log(event.currentTarget);
+        setContent(
+          memoContents[event.currentTarget.dataset.memoNo],
+          event.currentTarget.dataset.memoNo
+        );
       });
     });
 }

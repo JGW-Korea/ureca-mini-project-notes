@@ -17,6 +17,15 @@ const quill = new Quill("#editor", {
   theme: "snow",
 });
 
-export const setContent = (content) => {
-  quill.setContents([{ insert: content }]);
+let seletedMemoNo;
+
+quill.on("text-change", function (delta, oldDelta, source) {
+  console.log(seletedMemoNo);
+  // console.log(quill.getContents());
+});
+
+export const setContent = (content, no) => {
+  const delta = JSON.parse(content);
+  seletedMemoNo = no;
+  quill.setContents(delta);
 };
