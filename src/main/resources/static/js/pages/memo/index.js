@@ -22,6 +22,7 @@ async function fetchMemoGroups(userNo) {
   return data;
 }
 
+// 각 메모 그룹에 속한 메모장들을 가져오는 비동기 작업
 async function fetchMemos(groupNo) {
   const response = await fetch(`/memo/findAll?no=${groupNo}`);
   const data = await response.json();
@@ -29,8 +30,9 @@ async function fetchMemos(groupNo) {
 }
 
 async function handleMemoGroups() {
-  const data = await fetchMemoGroups(userInfo.no);
+  const data = await fetchMemoGroups(userInfo.no); // 서버에서 사용자가 만든 메모 그룹을 가져온다.
 
+  // 서버에서 가져온 메모 그룹들을 요소로 변환시킨다.
   for (const element of data) {
     const $newListContainer = document.createElement("div");
     $newListContainer.classList.add("memo-group-list-item-container");
@@ -63,7 +65,10 @@ async function handleMemoGroups() {
 
     memoGroupContainer.appendChild($newListContainer);
 
+    // 첫 번째 메모 그룹은 모든 메모 그룹이기 때문에 모든 메모의 정보들을 가져온다.
     const memos = await fetchMemos(element.groupNo);
+
+    // 가져온 모든 메모장들을 요소로 변환시킨 후 HTML 문서에 적용시킨다.
     memos.forEach((memo) => {
       const $newMemoItemContainer = document.createElement("div");
       $newMemoItemContainer.classList.add("memo-list-item-container");
@@ -113,32 +118,39 @@ async function handleMemoGroups() {
       groupMemoList.appendChild($newMemoItemContainer);
     });
 
+    // 가장 먼저 가져온 메모장을 자동으로 선택한다.
     document
       .querySelectorAll(".memo-container .memo-list-item-container")[0]
       .classList.add("selected");
   }
 
-  let seletedMemoGroup;
-  let seletedMemo;
+  let seletedMemoGroup; // 선택한 메모 그룹에 대한 정보
+  let seletedMemo; // 선택한 메모 그룹에 속한 메모장들에 대한 정보
 
+  // 메모 그룹을 선택할 경우 발생하는 이벤트
   document
     .querySelectorAll(".memo-container .memo-group-list-item-container")
     .forEach((item) => {
+      // 기존에 선택된 메모 그룹의 정보를 가져온다.
       if (item.children[0].classList.contains("selected")) {
         seletedMemoGroup = item;
       }
 
+      // 특정 그룹을 클릭 했을 때 발생하는 이벤트
       item.addEventListener("click", async (event) => {
+        // 기존에 선택된 메모 그룹에서 selected 클래스 속성 값을 제거한다.
         if (seletedMemoGroup) {
           seletedMemoGroup.children[0].classList.remove("selected");
         }
 
+        // 클릭한 메모 그룹에 selected 클래스 속성 값을 추가하고, 선택한 메모 그룹에 대한 정보를 현재 영역으로 수정한다.
         event.currentTarget.children[0].classList.add("selected");
         seletedMemoGroup = event.currentTarget;
 
         // 기존에 있던 리스트들을 삭제 시킨다.
         if (groupMemoList.children.length) groupMemoList.textContent = "";
 
+        // 선택한 그룹의 data-group-no 번호를 가져온다. (Memo Table의 외래키이기 때문)
         const groupNo = event.currentTarget.dataset.groupNo;
 
         if (groupNo === "0")

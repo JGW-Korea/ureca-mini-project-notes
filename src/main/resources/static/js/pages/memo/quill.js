@@ -6,9 +6,7 @@ const toolbaroptions = [
   ],
   [{ list: "ordered" }, { list: "bullet" }], // 리스트 버튼 추가
   [{ indent: "+1" }, { indent: "-1" }], // 인덴트(띄어쓰기) 버튼 추가
-  [{ align: [] }], // 정렬 버튼 추가
-  ["image", "link", "video"], // 멀티 미디어 버튼 추가
-  ["clean"],
+  ["image", "video"], // 멀티 미디어 버튼 추가
 ];
 
 const quill = new Quill("#editor", {
