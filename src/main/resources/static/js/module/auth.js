@@ -64,3 +64,19 @@ export const registerInputValueCheck = (id, pwd, name) => {
 
   if (id && pwd && name) return "success";
 };
+
+export const updateUserInfoValueCheck = (id, pwd, confirmPwd, name) => {
+  if (!id && !pwd && !name && !confirmPwd) return "inputEmptyError";
+
+  if (!id) return "idValueEmptyError";
+
+  if (!pwd) return "passwordValueEmptyError";
+
+  if (!confirmPwd) return "confirmPasswordValueEmptyError";
+
+  if (!name) return "nameValueEmptyError";
+
+  if (pwd !== confirmPwd) return "passwordDoNotMatchError";
+
+  if (id && pwd && confirmPwd && name && pwd === confirmPwd) return "success";
+};

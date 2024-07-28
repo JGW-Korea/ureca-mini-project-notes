@@ -63,7 +63,7 @@
     <script type="module" src="../../js/pages/memo/index.js"></script>
     <script type="module" src="../../js/pages/memo/quill.js"></script>
     <script defer src="../../js/pages/memo/scroll.js"></script>
-    <script defer src="../../js/pages/memo/newGroupCreated.js"></script>
+    <script type="module" src="../../js/pages/memo/newGroupCreated.js"></script>
     <script defer src="../../js/pages/memo/actionBtn.js"></script>
   </head>
 
@@ -89,9 +89,9 @@
           <!-- Bootstrap 드롭다운 메뉴 -->
           <div class="dropdown-menu">
             <div
-              class="dropdown-item"
+              class="dropdown-item updateUserInfoModal"
               data-toggle="modal"
-              data-target="#exampleModal"
+              data-target="#updateUserInfoModalCenter"
             >
               <span class="material-symbols-outlined"> person </span>
               <span>회원정보 수정</span>
@@ -162,16 +162,17 @@
     <!-- 회원정보 수정 모달창 -->
     <div
       class="modal fade"
-      id="exampleModal"
-      tabindex="-1"
+      id="updateUserInfoModalCenter"
       role="dialog"
-      aria-labelledby="exampleModalLabel"
+      aria-labelledby="updateUserInfoModal"
       aria-hidden="true"
     >
-      <div class="modal-dialog" role="document">
+      <!-- 모달창 영역 -->
+      <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
+          <!-- 모달창 Header 영역 -->
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">회원정보 수정</h5>
+            회원정보 수정
             <button
               type="button"
               class="close"
@@ -181,7 +182,47 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body">...</div>
+
+          <!-- 모달창 Body 영역 -->
+          <div class="modal-body">
+            <form>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                placeholder="이름을 입력해주세요."
+              />
+
+              <input
+                type="text"
+                name="id"
+                id="id"
+                placeholder="아이디를 입력해주세요."
+              />
+
+              <input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="새로운 비밀번호를 입력해주세요."
+              />
+
+              <input
+                type="password"
+                name="password-confirm"
+                id="password-confirm"
+                placeholder="새로운 비밀번호를 다시 입력해주세요"
+              />
+
+              <input
+                type="submit"
+                value="회원정보 수정"
+                id="updateUserInfo-btn"
+              />
+            </form>
+
+            <span class="message-box"></span>
+          </div>
         </div>
       </div>
     </div>
