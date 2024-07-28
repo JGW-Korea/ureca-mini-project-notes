@@ -53,3 +53,21 @@ header .action-button .material-symbols-outlined {
   font-size: 28px;
   cursor: pointer;
 }
+
+/* Bootstrap 드롭 다운 메뉴 CSS 수정 */
+header .dropdown .dropdown-menu {
+  z-index: 10;
+}
+
+header .dropdown .dropdown-menu .dropdown-item {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+header .dropdown .dropdown-menu .dropdown-item .material-symbols-outlined {
+  font-size: 22px;
+  margin-right: 8px;
+}
