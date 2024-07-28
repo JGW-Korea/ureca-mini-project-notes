@@ -26,17 +26,11 @@
 }
 
 /* 비밀번호 찾기 Modal Disabled 효과 주기 */
-.modal#findUserPasswordModalCenter
-  .modal-body
-  > form:last-of-type
-  input:disabled {
+.modal .modal-body > form:last-of-type input:disabled {
   cursor: not-allowed;
 }
 
-.modal#findUserPasswordModalCenter
-  .modal-body
-  > form:last-of-type
-  input:disabled {
+.modal .modal-body > form:last-of-type input:disabled {
   cursor: not-allowed;
 }
 

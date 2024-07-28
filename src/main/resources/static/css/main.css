@@ -4,6 +4,7 @@
 
 /* Bootstrap CSS */
 @import url("./pages/bootstrap/modal.css");
+@import url("./pages/bootstrap/alert.css");
 
 /* Main 페이지 CSS */
 @import url("./pages/main/home.css");

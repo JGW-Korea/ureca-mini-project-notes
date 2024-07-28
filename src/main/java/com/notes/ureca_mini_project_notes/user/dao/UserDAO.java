@@ -20,4 +20,7 @@ public interface UserDAO {
   // 회원가입
   public User isUserDuplicate(User user) throws SQLException;
   public int register(User user) throws SQLException;
+
+  // 회원정보 수정
+  public int updateUserInfo(User user) throws SQLException;
 }

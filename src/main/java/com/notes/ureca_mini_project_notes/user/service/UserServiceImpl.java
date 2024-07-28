@@ -50,5 +50,10 @@ public class UserServiceImpl implements UserService {
   public int registerService(User user) throws SQLException {
     return dao.register(user);
   }
+
+  @Override
+  public int updateUserInfoService(User user) throws SQLException {
+    return dao.updateUserInfo(user);
+  }
   
 }

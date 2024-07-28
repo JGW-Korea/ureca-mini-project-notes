@@ -174,28 +174,38 @@ public class UserController {
   }
 
   @PostMapping("/update-user-info")
-  public Map<String, Object> update(@RequestBody User user) {
+  public Map<String, Object> update(@RequestBody User user, HttpServletRequest request) {
     
     Map<String, Object> response = new HashMap<>();
+    HttpSession session = request.getSession(false);
     
     try {
       
-      User userInfo = service.registerFindIdService(user);
+      if(session == null) {
+        response.put("status", "Not_Login_User");
+      } else {
 
-      // 중복된 아이디가 있을 경우
-      if(userInfo != null) {
-        // 아이디, 이름 중복 확인
-        if(userInfo.getId().equals(user.getId())) {
-          response.put("status", "DuplicateIdExists");
-        } else if(userInfo.getName().equals(user.getName())) {
-          response.put("status", "DuplicateNameExists");
+        User userInfo = service.registerFindIdService(user);
+
+        // 중복된 아이디가 있을 경우
+        if(userInfo != null) {
+          // 아이디, 이름 중복 확인
+          if(userInfo.getId().equals(user.getId())) {
+            response.put("status", "DuplicateIdExists");
+          } else if(userInfo.getName().equals(user.getName())) {
+            response.put("status", "DuplicateNameExists");
+          }
+        } else { // 중복된 아이디가 없을 경우
+          service.updateUserInfoService(user);
+          session.invalidate(); // 현재 사용자의 세션을 무효화 시키는 invalidate() 메서드를 통해 현재 사용자의 세션 정보를 모두 삭제한다.
+          response.put("status", "UserInfo_Update_Success");
         }
-      } else { // 중복된 아이디가 없을 경우
-        
+
       }
 
     } catch (Exception e) {
       // TODO: handle exception
+      e.printStackTrace();
     }
 
     return response;

@@ -1,6 +1,8 @@
 document
   .querySelector("header .action-button #logout-btn")
   .addEventListener("click", () => {
+    console.log("Hello");
+
     fetch("/user/logout", {
       method: "POST",
     })

@@ -19,5 +19,7 @@ public interface UserService {
   public User registerFindIdService(User user) throws SQLException;
   public int registerService(User user) throws SQLException;
 
+  // 회원정보 수정 Service 메서드
+  public int updateUserInfoService(User user) throws SQLException;
 
 }
