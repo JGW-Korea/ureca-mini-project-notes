@@ -65,6 +65,7 @@
     <script defer src="../../js/pages/memo/scroll.js"></script>
     <script defer src="../../js/pages/memo/logout.js"></script>
     <script type="module" src="../../js/pages/memo/userInfoUpdate.js"></script>
+    <script defer src="../../js/pages/memo/newMemoGroupCreate.js"></script>
   </head>
 
   <body>
@@ -127,9 +128,13 @@
           </div>
         </div>
         <div class="memo-group-bottom">
-          <div class="btn">
+          <div
+            class="btn"
+            data-toggle="modal"
+            data-target="#createNewMemoGroupCenter"
+          >
             <span class="material-symbols-outlined"> add_circle </span>
-            <span>새로운 폴더</span>
+            <span>새로운 그룹</span>
           </div>
         </div>
       </div>
@@ -159,7 +164,7 @@
       </div>
     </section>
 
-    <!-- 회원정보 수정 모달창 -->
+    <!-- 회원정보 수정 모달창(Bootstrap) -->
     <div
       class="modal fade"
       id="updateUserInfoModalCenter"
@@ -227,11 +232,52 @@
       </div>
     </div>
 
-    <!-- 회원정보 성공 Alert 박스 -->
+    <!-- 새로운 폴더 모달창(Bootstrap) -->
+    <div
+      class="modal fade"
+      id="createNewMemoGroupCenter"
+      role="dialog"
+      aria-labelledby="createNewMemoGroup"
+      aria-hidden="true"
+    >
+      <!-- 모달창 영역 -->
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <!-- 모달창 Header 영역 -->
+          <div class="modal-header">
+            새 그룹 생성
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+          <!-- 모달창 Body 영역 -->
+          <div class="modal-body">
+            <form>
+              <input
+                type="text"
+                name="title"
+                id="title"
+                placeholder="그룹 이름을 작성해주세요."
+              />
+
+              <input type="submit" value="그룹 생성" id="create-btn" />
+            </form>
+
+            <span class="message-box"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 회원정보 성공 Alert 박스(Bootstrap) -->
     <div class="alert alert-success none" role="alert">
       회원정보가 수정되었습니다. 다시 로그인 해주세요.
     </div>
-
-    <!-- <button id="logout-btn">로그아웃</button> -->
   </body>
 </html>

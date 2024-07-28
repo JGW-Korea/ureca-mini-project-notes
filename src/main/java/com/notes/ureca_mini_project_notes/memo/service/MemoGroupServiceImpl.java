@@ -19,5 +19,15 @@ public class MemoGroupServiceImpl implements MemoGroupService {
   public List<MemoGroup> findAllMemoGroup(int no) throws SQLException {
     return dao.findAll(no);
   }
+
+  @Override
+  public MemoGroup checkTitleExistence(MemoGroup group) throws SQLException {
+    return dao.find(group);
+  }
+
+  @Override
+  public int createNewMemoGroupService(MemoGroup group) throws SQLException {
+    return dao.create(group);
+  }
   
 }
