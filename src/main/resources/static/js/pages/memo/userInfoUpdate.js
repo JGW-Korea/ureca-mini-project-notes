@@ -143,5 +143,36 @@ document
         break;
 
       default:
+        msgBoxElement.textContent = "";
+        msgBoxElement.classList.remove("error");
+        fetch("/user/update-user-info", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            no: userInfo.no,
+            name: userName.value,
+            id: userId.value,
+            password: userPassword.value,
+          }),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.status === "DuplicateIdExists") {
+              msgBoxElement.classList.add("error");
+              msgBoxElement.textContent = "중복된 아이디가 존재합니다.";
+              console.log(userId);
+              userId.focus();
+            } else if (data.status === "DuplicateNameExists") {
+              msgBoxElement.classList.add("error");
+              msgBoxElement.textContent = "중복된 이름이 존재합니다.";
+              console.log(userName);
+              userName.focus();
+            } else {
+              msgBoxElement.textContent = "";
+              msgBoxElement.classList.remove("error");
+            }
+          });
     }
   });

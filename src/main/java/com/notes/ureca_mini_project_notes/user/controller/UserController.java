@@ -171,7 +171,34 @@ public class UserController {
     }
 
     return response;
+  }
 
+  @PostMapping("/update-user-info")
+  public Map<String, Object> update(@RequestBody User user) {
+    
+    Map<String, Object> response = new HashMap<>();
+    
+    try {
+      
+      User userInfo = service.registerFindIdService(user);
+
+      // 중복된 아이디가 있을 경우
+      if(userInfo != null) {
+        // 아이디, 이름 중복 확인
+        if(userInfo.getId().equals(user.getId())) {
+          response.put("status", "DuplicateIdExists");
+        } else if(userInfo.getName().equals(user.getName())) {
+          response.put("status", "DuplicateNameExists");
+        }
+      } else { // 중복된 아이디가 없을 경우
+        
+      }
+
+    } catch (Exception e) {
+      // TODO: handle exception
+    }
+
+    return response;
   }
 
 }
