@@ -11,4 +11,5 @@ public interface MemoService {
   public Memo find(Memo memo) throws SQLException;
   public int create(Memo memo) throws SQLException;
   public int delete(Memo memo) throws SQLException;
+  public int update(Memo memo) throws SQLException;
 }

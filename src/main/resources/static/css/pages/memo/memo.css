@@ -369,6 +369,7 @@
   .summary
   .snippet {
   flex-grow: 1;
+  max-width: 208px;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
@@ -403,6 +404,7 @@
 
 .memo-list-contents .memo-contents {
   flex-grow: 1;
+  max-width: 1340px;
 }
 
 /* Quill Editro CSS 스타일 정의 */

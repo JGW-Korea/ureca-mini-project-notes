@@ -35,4 +35,9 @@ public class MemoServiceImpl implements MemoService {
     return dao.delete(memo);
   }
   
+  @Override
+  public int update(Memo memo) throws SQLException {
+    return dao.update(memo);
+  }
+
 }

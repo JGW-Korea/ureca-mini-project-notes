@@ -15,5 +15,5 @@ public interface MemoDAO {
 
   public int create(Memo memo) throws SQLException;
   public int delete(Memo memo) throws SQLException;
-
+  public int update(Memo memo) throws SQLException;
 }  

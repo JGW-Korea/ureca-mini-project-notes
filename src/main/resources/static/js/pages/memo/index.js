@@ -6,8 +6,29 @@ if (!auth()) {
   location.href = "/";
 }
 
-quill.on("text-change", function (delta, oldDelta, source) {
+// 에디터가 변경될 경우
+quill.on("text-change", async function (delta, oldDelta, source) {
   if (source === "user") {
+    const currentSelectedMemo = document.querySelector(
+      ".memo-list-contents .memo-list .memo-list-item-container.selected"
+    );
+
+    await fetch("/memo/update-content", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        groupNo: currentSelectedMemo.dataset.groupNo,
+        memoNo: currentSelectedMemo.dataset.memoNo,
+        content: JSON.stringify(quill.getContents()),
+      }),
+    });
+
+    currentSelectedMemo.children[1].children[1].children[1].textContent =
+      JSON.stringify(
+        quill.getContents().ops[0].insert.split("\n")[0]
+      ).replaceAll('"', "");
   }
 });
 
@@ -97,7 +118,12 @@ async function handleMemoGroups() {
       $newDate.classList.add("date");
       const $newSnippet = document.createElement("div");
       $newSnippet.classList.add("snippet");
-      $newSnippet.textContent = JSON.parse(memo.content).ops;
+
+      if (JSON.parse(memo.content).ops.length) {
+        $newSnippet.textContent = JSON.stringify(
+          JSON.parse(memo.content).ops[0].insert.split("\n")[0]
+        ).replaceAll('"', "");
+      }
 
       $newSummary.appendChild($newDate);
       $newSummary.appendChild($newSnippet);
@@ -234,7 +260,11 @@ async function handleMemoGroups() {
             const $newSnippet = document.createElement("div");
             $newSnippet.classList.add("snippet");
 
-            $newSnippet.textContent = JSON.parse(memo.content).ops;
+            if (JSON.parse(memo.content).ops.length) {
+              $newSnippet.textContent = JSON.stringify(
+                JSON.parse(memo.content).ops[0].insert.split("\n")[0]
+              ).replaceAll('"', "");
+            }
 
             $newSummary.appendChild($newDate);
             $newSummary.appendChild($newSnippet);

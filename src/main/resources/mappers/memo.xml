@@ -21,7 +21,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     delete from memos where group_no=#{groupNo} and memo_no=#{memoNo}
   </delete>
 
-
+  <update id="update" parameterType="Memo">
+    update memos
+    set description = #{content}
+    where group_no = #{groupNo} and memo_no = #{memoNo}
+  </update>
 
 </mapper>
 
