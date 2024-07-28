@@ -9,4 +9,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     select group_no as groupNo, memo_no as memoNo, title, description as content from memos where group_no = #{no}
   </select>
 
+  <select id="find" parameterType="Memo" resultType="Memo">
+    select group_no as groupNo, memo_no as memoNo, title, description as content from memos where group_no = #{groupNo} and title = #{title}
+  </select>
+
+  <insert id="create" parameterType="Memo">
+    insert into memos (group_no, title, description) values (#{groupNo}, #{title}, #{content})
+  </insert>
+
+
 </mapper>
+

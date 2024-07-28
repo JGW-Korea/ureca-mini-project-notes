@@ -8,5 +8,6 @@ import com.notes.ureca_mini_project_notes.memo.dto.Memo;
 public interface MemoService {
   
   public List<Memo> findAllMemo(int no) throws SQLException;
-  
+  public Memo find(Memo memo) throws SQLException;
+  public int create(Memo memo) throws SQLException;
 }

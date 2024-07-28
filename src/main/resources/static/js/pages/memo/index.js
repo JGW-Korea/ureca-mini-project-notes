@@ -6,10 +6,10 @@ if (!auth()) {
   location.href = "/";
 }
 
-// 브라우저의 우클릭 기본 이벤트를 없앤다.
-window.oncontextmenu = function () {
-  return false;
-};
+quill.on("text-change", function (delta, oldDelta, source) {
+  if (source === "user") {
+  }
+});
 
 // 현재 로그인한 사용자의 세션 정보를 가져온다.
 const userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
@@ -133,8 +133,10 @@ async function handleMemoGroups() {
     ".memo-container .memo-list-item-container"
   );
 
-  memoList.classList.add("selected");
-  setContent(memoContents[memoList.dataset.memoNo], memoList.dataset.memoNo);
+  if (memoList) {
+    memoList.classList.add("selected");
+    setContent(memoContents[memoList.dataset.memoNo], memoList.dataset.memoNo);
+  }
 
   let seletedMemoGroup; // 선택한 메모 그룹에 대한 정보
   let seletedMemo; // 선택한 메모 그룹에 속한 메모장들에 대한 정보

@@ -19,5 +19,15 @@ public class MemoServiceImpl implements MemoService {
   public List<Memo> findAllMemo(int no) throws SQLException {
     return dao.findAll(no);
   }
+
+  @Override
+  public Memo find(Memo memo) throws SQLException {
+    return dao.find(memo);
+  }
+
+  @Override
+  public int create(Memo memo) throws SQLException {
+    return dao.create(memo);
+  }
   
 }

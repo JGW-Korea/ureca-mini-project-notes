@@ -1,10 +1,14 @@
 package com.notes.ureca_mini_project_notes.memo.controller;
 
 import java.util.List;
+import java.util.Map;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -46,6 +50,27 @@ public class MemoController {
       e.printStackTrace();
     }
     
+    return response;
+  }
+
+  @PostMapping("/create")
+  public Map<String, Object> createNewMemo(@RequestBody Memo memo) {
+    Map<String, Object> response = new HashMap<>();
+
+    try {
+      Memo findMemo = service.find(memo);
+
+      if(findMemo != null) {
+        response.put("status", "DuplicateTitleExists");
+      } else {
+        service.create(memo);
+        response.put("status", "success");
+      }
+
+    } catch(Exception e) {
+      e.printStackTrace();
+    }
+
     return response;
   }
 

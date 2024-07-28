@@ -49,4 +49,10 @@ public class Memo {
     this.content = content;
   }
 
+  @Override
+  public String toString() {
+    return "Memo [groupNo=" + groupNo + ", memoNo=" + memoNo + ", title=" + title + ", content=" + content + "]";
+  }
+
+  
 }
