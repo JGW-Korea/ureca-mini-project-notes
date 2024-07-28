@@ -96,4 +96,52 @@ document
   .querySelector("#updateUserInfoModalCenter #updateUserInfo-btn")
   .addEventListener("click", (event) => {
     event.preventDefault();
+
+    // 각 input 입력란 유효성 검사
+    switch (
+      updateUserInfoValueCheck(
+        userId.value,
+        userPassword.value,
+        userPasswordConfirm.value,
+        userName.value
+      )
+    ) {
+      case "inputEmptyError": // 입력란이 작성되지 않은 경우
+        msgBoxElement.textContent = "입력란을 모두 작성해주세요.";
+        msgBoxElement.classList.add("error");
+        userName.focus();
+        break;
+
+      case "idValueEmptyError": // 아이디를 입력하지 않은 경우
+        msgBoxElement.textContent = "아이디를 작성해주세요.";
+        msgBoxElement.classList.add("error");
+        userId.focus();
+        break;
+
+      case "passwordValueEmptyError": // 비밀번호를 입력하지 않은 경우
+        msgBoxElement.textContent = "새로운 비밀번호를 입력해주세요.";
+        msgBoxElement.classList.add("error");
+        userPassword.focus();
+        break;
+
+      case "confirmPasswordValueEmptyError": // 비밀번호 확인을 입력하지 않은 경우
+        msgBoxElement.textContent = "새로운 비밀번호 확인 부분을 입력해주세요.";
+        msgBoxElement.classList.add("error");
+        userPasswordConfirm.focus();
+        break;
+
+      case "nameValueEmptyError": // 이름을 입력하지 않은 경우
+        msgBoxElement.textContent = "이름을 작성해주세요.";
+        msgBoxElement.classList.add("error");
+        userName.focus();
+        break;
+
+      case "passwordDoNotMatchError": // 비밀번호가 일치하지 않을 경우
+        msgBoxElement.textContent = "비밀번호가 일치하지 않습니다.";
+        msgBoxElement.classList.add("error");
+        userPasswordConfirm.focus();
+        break;
+
+      default:
+    }
   });
