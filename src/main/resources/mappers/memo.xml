@@ -17,6 +17,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     insert into memos (group_no, title, description) values (#{groupNo}, #{title}, #{content})
   </insert>
 
+  <delete id="delete" parameterType="Memo">
+    delete from memos where group_no=#{groupNo} and memo_no=#{memoNo}
+  </delete>
+
+
 
 </mapper>
 

@@ -97,7 +97,7 @@ async function handleMemoGroups() {
       $newDate.classList.add("date");
       const $newSnippet = document.createElement("div");
       $newSnippet.classList.add("snippet");
-      $newSnippet.textContent = memo.content;
+      $newSnippet.textContent = JSON.parse(memo.content).ops;
 
       $newSummary.appendChild($newDate);
       $newSummary.appendChild($newSnippet);
@@ -120,6 +120,7 @@ async function handleMemoGroups() {
       $newMemoItemContainer.appendChild($newGutter);
       $newMemoItemContainer.appendChild($newContent);
       $newMemoItemContainer.dataset.memoNo = memo.memoNo;
+      $newMemoItemContainer.dataset.groupNo = element.groupNo;
 
       $memoListAll.push($newMemoItemContainer);
       groupMemoList.appendChild($newMemoItemContainer);
@@ -232,7 +233,8 @@ async function handleMemoGroups() {
             $newDate.classList.add("date");
             const $newSnippet = document.createElement("div");
             $newSnippet.classList.add("snippet");
-            $newSnippet.textContent = memo.content;
+
+            $newSnippet.textContent = JSON.parse(memo.content).ops;
 
             $newSummary.appendChild($newDate);
             $newSummary.appendChild($newSnippet);

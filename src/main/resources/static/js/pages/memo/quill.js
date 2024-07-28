@@ -19,8 +19,6 @@ export const quill = new Quill("#editor", {
 
 let seletedMemoNo;
 
-// quill.on("text-change", function (delta, oldDelta, source) {});
-
 export const setContent = (content, no) => {
   const delta = JSON.parse(content);
   seletedMemoNo = no;

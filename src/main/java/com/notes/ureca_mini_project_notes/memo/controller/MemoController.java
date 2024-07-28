@@ -74,4 +74,18 @@ public class MemoController {
     return response;
   }
 
+  @PostMapping("/delete")
+  public int deleteSeleteMemo(@RequestBody Memo memo) {
+    int response = 0;
+    
+    try {
+      response = service.delete(memo);
+    } catch (Exception e) {
+      // TODO: handle exception
+      e.printStackTrace();
+    }
+    
+    return response;
+  }
+
 }

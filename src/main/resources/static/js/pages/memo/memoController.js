@@ -4,6 +4,7 @@ const memoMsgBoxElement = document.querySelector(
 );
 // console.log(userInfo);
 
+// 모든 메모 그룹 선택할 경우 메모장 선택 못하게 막기
 document
   .querySelector(".memo-header-content .material-symbols-outlined:first-child")
   .addEventListener("click", (event) => {
@@ -19,6 +20,7 @@ document
     }
   });
 
+// 메모 그룹 선택 이후 새로운 메모장 생성할 경우 발생하는 이벤트
 document
   .querySelector("#createNewMemoCenter #create-memo-btn")
   .addEventListener("click", async (event) => {
@@ -59,4 +61,28 @@ document
           }
         });
     }
+  });
+
+// 메모 그룹 선택 이후 삭제 버튼을 누르는 경우
+document
+  .querySelector(".memo-header-content #deleteMemo")
+  .addEventListener("click", () => {
+    const currentSelectedMemo = document.querySelector(
+      ".memo-list-contents .memo-list .memo-list-item-container.selected"
+    );
+
+    fetch("/memo/delete", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        groupNo: currentSelectedMemo.dataset.groupNo,
+        memoNo: currentSelectedMemo.dataset.memoNo,
+      }),
+    })
+      .then((res) => res.text())
+      .then((data) => {
+        if (Number(data) > 0) location.reload();
+      });
   });
