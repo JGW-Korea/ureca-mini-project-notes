@@ -9,7 +9,7 @@ const toolbaroptions = [
   ["image", "video"], // 멀티 미디어 버튼 추가
 ];
 
-const quill = new Quill("#editor", {
+export const quill = new Quill("#editor", {
   modules: {
     toolbar: toolbaroptions,
   },
@@ -19,10 +19,7 @@ const quill = new Quill("#editor", {
 
 let seletedMemoNo;
 
-quill.on("text-change", function (delta, oldDelta, source) {
-  console.log(seletedMemoNo);
-  // console.log(quill.getContents());
-});
+// quill.on("text-change", function (delta, oldDelta, source) {});
 
 export const setContent = (content, no) => {
   const delta = JSON.parse(content);

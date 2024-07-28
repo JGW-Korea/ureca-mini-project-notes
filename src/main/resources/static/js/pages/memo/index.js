@@ -1,5 +1,5 @@
 import { auth } from "../../module/auth.js";
-import { setContent } from "./quill.js";
+import { quill, setContent } from "./quill.js";
 
 // 현재 해당 URL로 접근한 사용자가 로그인을 하지 않은 경우 메인 페이지로 돌려 보낸다.
 if (!auth()) {
@@ -149,6 +149,8 @@ async function handleMemoGroups() {
         if (seletedMemoGroup) {
           seletedMemoGroup.children[0].classList.remove("selected");
         }
+
+        console.log(quill);
 
         // 클릭한 메모 그룹에 selected 클래스 속성 값을 추가하고, 선택한 메모 그룹에 대한 정보를 현재 영역으로 수정한다.
         event.currentTarget.children[0].classList.add("selected");
