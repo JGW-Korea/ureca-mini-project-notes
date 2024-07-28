@@ -131,6 +131,29 @@
   .memo-group-list-contents
   .memo-group-list
   .memo-group-list-item-container
+  .memo-group-list-item-row.selected
+  .delete-btn {
+  font-size: 20px;
+  color: #696969;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.memo-container
+  .memo-group-panel
+  .memo-group-list-contents
+  .memo-group-list
+  .memo-group-list-item-container
+  .memo-group-list-item-row.selected
+  .delete-btn:hover {
+  color: red;
+}
+
+.memo-container
+  .memo-group-panel
+  .memo-group-list-contents
+  .memo-group-list
+  .memo-group-list-item-container
   .memo-group-list-item-row
   .memo-group-title-select-button
   .folder-title {

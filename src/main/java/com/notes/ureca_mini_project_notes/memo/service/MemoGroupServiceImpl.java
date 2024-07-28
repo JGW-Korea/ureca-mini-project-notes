@@ -29,5 +29,10 @@ public class MemoGroupServiceImpl implements MemoGroupService {
   public int createNewMemoGroupService(MemoGroup group) throws SQLException {
     return dao.create(group);
   }
+
+  @Override
+  public int deleteMemoGroupsService(MemoGroup group) throws SQLException {
+    return dao.delete(group);
+  }
   
 }

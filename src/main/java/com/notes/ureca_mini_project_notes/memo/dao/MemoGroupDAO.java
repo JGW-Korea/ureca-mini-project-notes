@@ -13,4 +13,6 @@ public interface MemoGroupDAO {
   
   public MemoGroup find(MemoGroup group) throws SQLException; // 현재 생성하려는 그룹이 이미 존재할 경우
   public int create(MemoGroup group) throws SQLException; // 새로운 그룹을 생성
+
+  public int delete(MemoGroup group) throws SQLException; // 새로운 그룹을 생성
 }

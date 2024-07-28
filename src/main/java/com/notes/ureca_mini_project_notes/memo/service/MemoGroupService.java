@@ -12,5 +12,6 @@ public interface MemoGroupService {
   
   public MemoGroup checkTitleExistence(MemoGroup group) throws SQLException;
   public int createNewMemoGroupService(MemoGroup group) throws SQLException; // 새로운 그룹을 생성한다.
+  public int deleteMemoGroupsService(MemoGroup group) throws SQLException; // 메모 그룹을 삭제한다.
   
 }

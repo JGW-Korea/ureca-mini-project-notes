@@ -64,4 +64,19 @@ public class GroupController {
     return response;
   }
 
+  @PostMapping("/delete")
+  public int deleteMemoGroup(@RequestBody MemoGroup group) {
+    
+    int response = 0;
+
+    try {
+      response = service.deleteMemoGroupsService(group);
+    } catch (Exception e) {
+      // TODO: handle exception
+      e.printStackTrace();
+    }
+
+    return response;
+  }
+
 }

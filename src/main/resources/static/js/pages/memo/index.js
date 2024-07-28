@@ -6,6 +6,11 @@ if (!auth()) {
   location.href = "/";
 }
 
+// 브라우저의 우클릭 기본 이벤트를 없앤다.
+window.oncontextmenu = function () {
+  return false;
+};
+
 // 현재 로그인한 사용자의 세션 정보를 가져온다.
 const userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
 
@@ -143,18 +148,48 @@ async function handleMemoGroups() {
         seletedMemoGroup = item;
       }
 
-      // 특정 그룹을 클릭 했을 때 발생하는 이벤트
+      // // 특정 그룹을 클릭 했을 때 발생하는 이벤트
       item.addEventListener("click", async (event) => {
         // 기존에 선택된 메모 그룹에서 selected 클래스 속성 값을 제거한다.
         if (seletedMemoGroup) {
           seletedMemoGroup.children[0].classList.remove("selected");
-        }
 
-        console.log(quill);
+          for (const child of seletedMemoGroup.children[0].children) {
+            if (child.classList.contains("delete-btn")) {
+              seletedMemoGroup.children[0].removeChild(child);
+            }
+          }
+        }
 
         // 클릭한 메모 그룹에 selected 클래스 속성 값을 추가하고, 선택한 메모 그룹에 대한 정보를 현재 영역으로 수정한다.
         event.currentTarget.children[0].classList.add("selected");
         seletedMemoGroup = event.currentTarget;
+
+        if (event.currentTarget.dataset.groupNo > 0) {
+          const $newDeleteDivision = document.createElement("div");
+          $newDeleteDivision.classList.add("delete-btn");
+          $newDeleteDivision.classList.add("material-symbols-outlined");
+          $newDeleteDivision.textContent = "delete";
+          $newDeleteDivision.dataset.groupNo =
+            event.currentTarget.dataset.groupNo;
+          $newDeleteDivision.onclick = async function () {
+            await fetch("/memo/group/delete", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                groupNo: this.dataset.groupNo,
+                userNo: userInfo.no,
+              }),
+            })
+              .then((res) => res.text())
+              .then((data) => {
+                if (Number(data) > 0) location.reload();
+              });
+          };
+          event.currentTarget.children[0].appendChild($newDeleteDivision);
+        }
 
         // 기존에 있던 리스트들을 삭제 시킨다.
         if (groupMemoList.children.length) groupMemoList.textContent = "";

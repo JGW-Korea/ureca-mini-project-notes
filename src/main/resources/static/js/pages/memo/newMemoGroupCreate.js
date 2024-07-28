@@ -5,6 +5,7 @@ const msgBoxElement = document.querySelector(
 
 const userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
 
+// 새로운 메모 그룹 생성 완료
 document
   .querySelector("#createNewMemoGroupCenter #create-btn")
   .addEventListener("click", (event) => {
