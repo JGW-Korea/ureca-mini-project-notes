@@ -407,6 +407,12 @@
   max-width: 1340px;
 }
 
+@media screen and (max-width: 1440px) {
+  .memo-list-contents .memo-contents {
+    max-width: 860px; /* 노트북에 대한 max-width 값 */
+  }
+}
+
 /* Quill Editro CSS 스타일 정의 */
 .memo-contents .ql-toolbar.ql-snow {
   border: none;

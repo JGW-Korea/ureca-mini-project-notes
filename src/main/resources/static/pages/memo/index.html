@@ -36,6 +36,21 @@
     <!-- CSS 파일 Import -->
     <link rel="stylesheet" href="../../css/main.css" />
 
+    <script type="module" src="../../js/pages/memo/index.js"></script>
+    <script type="module" src="../../js/pages/memo/quill.js"></script>
+    <script defer src="../../js/pages/memo/scroll.js"></script>
+    <script defer src="../../js/pages/memo/logout.js"></script>
+    <script type="module" src="../../js/pages/memo/userInfoUpdate.js"></script>
+    <script defer src="../../js/pages/memo/newMemoGroupCreate.js"></script>
+    <script defer src="../../js/pages/memo/memoController.js"></script>
+
+    <!-- Quill Editor JS Import -->
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/gh/hunghg255/quill-resize-module/dist/quill-resize-image.min.js"
+    ></script>
+
     <!-- Bootstrap JavaScript Import -->
     <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -52,21 +67,6 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
-
-    <!-- Quill Editor JS Import -->
-    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
-    <script
-      defer
-      src="https://cdn.jsdelivr.net/gh/hunghg255/quill-resize-module/dist/quill-resize-image.min.js"
-    ></script>
-
-    <script type="module" src="../../js/pages/memo/index.js"></script>
-    <script type="module" src="../../js/pages/memo/quill.js"></script>
-    <script defer src="../../js/pages/memo/scroll.js"></script>
-    <script defer src="../../js/pages/memo/logout.js"></script>
-    <script type="module" src="../../js/pages/memo/userInfoUpdate.js"></script>
-    <script defer src="../../js/pages/memo/newMemoGroupCreate.js"></script>
-    <script defer src="../../js/pages/memo/memoController.js"></script>
   </head>
 
   <body>
@@ -328,5 +328,11 @@
     <div class="alert alert-success none" role="alert">
       회원정보가 수정되었습니다. 다시 로그인 해주세요.
     </div>
+
+    <script>
+      $(".updateUserInfoModal").on("click", function () {
+        $("#updateUserInfoModalCenter").modal("show");
+      });
+    </script>
   </body>
 </html>
